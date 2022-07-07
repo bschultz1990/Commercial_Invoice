@@ -68,12 +68,6 @@ let formCstName = document.getElementById("form-cst-name");
 let formCstAddress = document.getElementById("form-cst-address");
 let shiptotable = document.getElementById("shiptotable");
 
-const formCommodities = document.getElementById("form-commodities");
-formCommodities.addEventListener("click", function (e) {
-    e.preventDefault(); // don't refresh the page
-    formCommodities.value = ""; // Clear default value on click.
-});
-
 // Submit Button Magic
 const formSubmit = document.getElementById("form-submit");
 formSubmit.addEventListener("submit", function (e) {
