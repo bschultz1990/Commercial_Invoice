@@ -8,46 +8,22 @@
 </head>
 <body>
 	<div class="container">
-		<form action = "submit" id="form-submit" class="form-data">
 			<div class="form-data">
-				<label for="form-order">Order:</label>
-				<input type="text" name="form-order" id="form-order">
-			</div>
-			<div class="form-data">
-				<label for="form-date">Date:</label>
-				<input type="date" name="form-date" id="form-date">
-			</div>
-			<div class="form-data">
-				<label for="form-cst-name">Cst. Full Name:</label>
-				<input type="text" name="form-cst-name" id="form-cst-name">
-			</div>
-			<div class="form-data">
-				<label for="form-cst-address">Cst. Address:</label>
 				<!-- <input type="text" name="form-cst-address" id="form-cst-address"> -->
-				<textarea name="form-cst-address" id="form-cst-address" cols="35" rows="4"></textarea>
 			</div>
 
 				<div class="form-data">
-					<label for="form-commodities">Commodities:
-						<input type="button" value="-">
-						<input type="button" value="+">
-					</label>
-					<input type="text" name="form-commodities" id="form-commodities" placeholder="Quantity">
-					<input type="text" name="form-description" placeholder="Description">
-					<input type="text" name="form-weight" placeholder="Weight (lbs)">
-					<input type="text" name="form-value" placeholder="Value $USD">
+					<input type="button" value="-">
+					<input type="button" value="+">
+					<input type="text" class="invis-form" name="form-commodities" id="form-commodities" placeholder="Quantity">
+					<input type="text" class="invis-form" name="form-description" placeholder="Description">
+					<input type="text" class="invis-form" name="form-weight" placeholder="Weight (lbs)">
+					<input type="text" class="invis-form" name="form-value" placeholder="Value $USD">
 				</div>
 
-			<div class="form-data">
-				<label for="form-pkg-count">Package Count:</label>
-				<input type="number" name="form-pkg-count" id="form-pkg-count">
-			</div>
-			
-			<div class="form-data">
-				<input type="submit" value="Submit">
-			</div>
-		</form>
-		<!-- form -->
+
+				<!-- ACTUAL PAGE -->
+		<form action = "submit" id="form-submit" class="form-data">
 		<div id="sheet">
 			<section>
 				<div class="boxheader center">
@@ -59,32 +35,108 @@
 						<table class="table borderless" id="orderTable">
 							<tr>
 								<td class="bold">Order:</td>
-								<td id="ordernum"></td>
+								<td id="ordernum"><input class="invis-form" type="text" name="form-order" id="form-order" placeholder="Order #"></td>
 							</tr>
 							<tr>
 								<td class="bold">Date:</td>
-								<td id="orderdate"></td>
+								<td id="orderdate"><input class="invis-form" type="date" name="form-date" id="form-date"></td>
 							</tr>
 						</table>
 					</div>
 				</div>
 			</section>
-			<section>
-				<table id="toFromTable" class="table">
-					<tr>
-						<th class="boxheader bold tablehalf"><h3>Ship From</h3></th>
-						<th class="boxheader bold tablehalf"><h3 class="bold">Ship To</h3></th>
-					</tr>
-					<tr>
-						<td class="bold">Pellethead.com</td>
-						<td class="bold"></td>
-					</tr>
-					<tr>
-						<td>W9715 State Road 96<br>PO BOX 167<br>Dale, Wisconsin 54931<br>920-955-3858<br>http://pellethead.com</td>
-						<td id="shiptoaddress"></td>
-					</tr>
-				</table>
-			</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<section class="flex-section">
+				<div class="halfwidth">
+					<div class="boxheader bold">
+						<h3 class="centertext">Ship From</h3>
+					</div>
+					<div class="name">
+						<h4>Pellethead.com</h4>
+					</div> <!-- name -->
+					<div>W9715 State Road 96<br>PO Box 167<br>Dale, WI<br> 54931<br>920-779-6647<br>http://www.pellethead.com</div>
+				</div> <!-- halfwidth -->
+
+				<div class="halfwidth">
+					<div class="boxheader bold">
+						<h3 class="centertext">Ship To</h3>
+					</div> <!-- boxheader -->
+					<div class="name">
+						<input class="invis-form" type="text" name="form-cst-name" id="form-cst-name" placeholder="Cst. Full Name">
+					</div>	
+					<div>
+						<textarea class="invis-form" name="form-cst-address" id="form-cst-address" cols="50" rows="6" placeholder="Cst. Address"></textarea>
+					</div>
+				</div>
+			</section> <!-- flex-section -->
+
+
+
+
+
+
+
+
+			<section class="flex-section">
+				<div class="halfwidth">
+					<div class="boxheader bold">
+						<h3 class="centertext">Importer Other Than Recipient</h3>
+					</div>
+					<div>Earth Sense Energy Systems<br>CL 380782<br>W9715 State Road 96<br>Dale, WI 54931<br>920-779-6647 / 800-236-6647</div>
+				</div> <!-- halfwidth -->
+				<div class="halfwidth">
+					<div class="boxheader bold">
+						<h3>Ship To</h3>
+					</div> <!-- boxheader -->
+				</div>
+			<section><!-- flex-section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<section>
 				<table id = "shippingDetails" class="table">
 					<tr>
@@ -92,7 +144,7 @@
 						<th class="boxheader bold tablehalf"><h3>Ship To</h3></th>
 					</tr>
 					<tr>
-						<td>Earth Sense Energy Systems<br>CL 380782<br>W9715 State Road 96<br>Dale, WI 54931<br>920-779-6647 / 800-236-6647</td>
+						<td></td>
 						<td>
 							<div id="checkboxes">
 								<div class="box"><div class="checkbox"></div class="bold">CIF</div>
@@ -100,7 +152,7 @@
 								<div class="box"><div class="checkbox"></div class="bold">C&F</div>
 							</div>
 							<div>
-								<table id = shiptotable class="table shiptotable">
+								<table id = "shiptotable" class="table shiptotable">
 									<tr>
 										<td class="smtablehalf">Country of Export:</td>
 										<td class="smtablehalf">United States</td>
@@ -115,7 +167,7 @@
 									</tr>
 									<tr>
 										<td>Package Count:</td>
-										<td id="pkgcount"></td>
+										<td id="pkgcount"><input type="number" class="invis-form" name="form-pkg-count" id="form-pkg-count" placeholder="Pkg. Count"></td>
 									</tr>
 									<tr>
 										<td>Total Weight:</td>
@@ -179,6 +231,8 @@
 			</section>
 		</div>
 		<!-- sheet -->
+		<input type="submit" value="Submit">
+		</form> <!-- form -->
 		
 	</div> <!-- container -->
 	<script src="commercial_invoice.js"></script>

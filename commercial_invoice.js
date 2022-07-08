@@ -23,7 +23,6 @@ function addItems(array) {
         }
     }
 }
-
 function addWeights() {
     // iterate over an array. Get all the weights (index[3] of each item.)
     let weights = [];
