@@ -22,7 +22,7 @@
 				</div>
 
 
-				<!-- ACTUAL PAGE -->
+	<!--================================================= ACTUAL PAGE ============================================ -->
 		<form action = "submit" id="form-submit" class="form-data">
 		<div id="sheet">
 			<section>
@@ -45,34 +45,6 @@
 					</div>
 				</div>
 			</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 			<section class="flex-section">
 				<div class="halfwidth">
@@ -112,73 +84,61 @@
 					</div>
 					<div>Earth Sense Energy Systems<br>CL 380782<br>W9715 State Road 96<br>Dale, WI 54931<br>920-779-6647 / 800-236-6647</div>
 				</div> <!-- halfwidth -->
+
 				<div class="halfwidth">
 					<div class="boxheader bold">
-						<h3>Ship To</h3>
+						<h3 class="centertext">Ship To</h3>
 					</div> <!-- boxheader -->
+
+					<div id="checkboxes">
+						<div class="box"><div class="checkbox"></div class="bold">CIF</div>
+						<div class="box"><div class="checkbox"></div class="bold">FOB</div>
+						<div class="box"><div class="checkbox"></div class="bold">C&F</div>
+					</div>
+
+					<table class="table shiptotable">
+						<tr>
+							<td class="smtablehalf">Country of Export:</td>
+							<td class="smtablehalf">United States</td>
+						</tr>
+						<tr>
+							<td>Country of Destination:</td>
+							<td id="countrydest"></td>
+						</tr>
+						<tr>
+							<td>Currency:</td>
+							<td>US Dollar</td>
+						</tr>
+						<tr>
+							<td>Package Count:</td>
+							<td id="pkgcount"><input type="number" class="invis-form" name="form-pkg-count" id="form-pkg-count" placeholder="Pkg. Count"></td>
+						</tr>
+						<tr>
+							<td>Total Weight:</td>
+							<td id="totalweight"></td>
+						</tr>
+					</table>
 				</div>
-			<section><!-- flex-section -->
+			</section><!-- flex-section -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<section>
-				<table id = "shippingDetails" class="table">
-					<tr>
-						<th class="boxheader bold tablehalf"><h3>Importer Other Than Recipient</h3></th>
-						<th class="boxheader bold tablehalf"><h3>Ship To</h3></th>
-					</tr>
-					<tr>
-						<td></td>
-						<td>
-							<div id="checkboxes">
-								<div class="box"><div class="checkbox"></div class="bold">CIF</div>
-								<div class="box"><div class="checkbox"></div class="bold">FOB</div>
-								<div class="box"><div class="checkbox"></div class="bold">C&F</div>
-							</div>
-							<div>
-								<table id = "shiptotable" class="table shiptotable">
-									<tr>
-										<td class="smtablehalf">Country of Export:</td>
-										<td class="smtablehalf">United States</td>
-									</tr>
-									<tr>
-										<td>Country of Destination:</td>
-										<td id="countrydest"></td>
-									</tr>
-									<tr>
-										<td>Currency:</td>
-										<td>US Dollar</td>
-									</tr>
-									<tr>
-										<td>Package Count:</td>
-										<td id="pkgcount"><input type="number" class="invis-form" name="form-pkg-count" id="form-pkg-count" placeholder="Pkg. Count"></td>
-									</tr>
-									<tr>
-										<td>Total Weight:</td>
-										<td id="totalweight"></td>
-									</tr>
-								</table>
-							</div>
-						</td>
-					</tr>
-				</table>
+			<section class="flex-section">
+				<div id="col-qty">
+					<div class="boxheader bold centertext"><h3>Qty.</h3></div>
+				</div>
+				<div id="col-meas">
+					<div class="boxheader bold centertext"><h3>Unit of Measure</h3></div>
+				</div>
+				<div id="col-desc">
+					<div class="boxheader bold centertext"><h3>Commodity Description</h3></div>
+				</div>
+				<div id="col-wt">
+					<div class="boxheader bold centertext"><h3>Wt.</h3></div>
+				</div>
+				<div id="col-val">
+					<div class="boxheader bold centertext"><h3>Unit Value</h3></div>
+				</div>
 			</section>
+
 			<section>
 				<table id="commodities" class="table">
 					<tbody>
