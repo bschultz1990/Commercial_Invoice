@@ -15,7 +15,7 @@
 				<div class="form-data">
 					<input type="button" value="-">
 					<input type="button" value="+">
-					<input type="text" class="invis-form" name="form-commodities" id="form-commodities" placeholder="Quantity">
+					
 					<input type="text" class="invis-form" name="form-description" placeholder="Description">
 					<input type="text" class="invis-form" name="form-weight" placeholder="Weight (lbs)">
 					<input type="text" class="invis-form" name="form-value" placeholder="Value $USD">
@@ -65,7 +65,7 @@
 						<input class="invis-form" type="text" name="form-cst-name" id="form-cst-name" placeholder="Cst. Full Name">
 					</div>	
 					<div>
-						<textarea class="invis-form" name="form-cst-address" id="form-cst-address" cols="50" rows="6" placeholder="Cst. Address"></textarea>
+						<textarea class="invis-form" name="form-cst-address" id="form-cst-address" cols="40" rows="6" placeholder="Cst. Address"></textarea>
 					</div>
 				</div>
 			</section> <!-- flex-section -->
@@ -124,20 +124,35 @@
 			<section class="flex-section">
 				<div id="col-qty">
 					<div class="boxheader bold centertext"><h3>Qty.</h3></div>
-				</div>
-				<div id="col-meas">
-					<div class="boxheader bold centertext"><h3>Unit of Measure</h3></div>
+					<input type="text" class="invis-form form-grid" name="form-commodities" id="form-commodities" placeholder="Qty.">
 				</div>
 				<div id="col-desc">
 					<div class="boxheader bold centertext"><h3>Commodity Description</h3></div>
+					<input type="text" class="invis-form form-grid" name="form-desc" id="form-desc" placeholder="Description">
 				</div>
 				<div id="col-wt">
-					<div class="boxheader bold centertext"><h3>Wt.</h3></div>
+					<div class="boxheader bold centertext"><h3>Wt. (lbs)</h3></div>
+					<input type="text" class="invis-form form-grid" name="form-weight" id="form-weight" placeholder="Wt.">
 				</div>
 				<div id="col-val">
-					<div class="boxheader bold centertext"><h3>Unit Value</h3></div>
+					<div class="boxheader bold centertext"><h3>Value</h3></div>
+					<input type="text" class="invis-form form-grid" name="form-value" id="form-value" placeholder="Value $">
 				</div>
 			</section>
+
+
+
+
+
+
+
+
+			
+
+
+
+
+
 
 			<section>
 				<table id="commodities" class="table">

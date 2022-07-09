@@ -1,6 +1,11 @@
+:root {
+  --headPadding: .125rem;
+  font-size: smaller;
+}
+
 body {
-    font-family: calibri;
-    background-color: lightcoral; 
+  font-family: calibri;
+  background-color: lightcoral; 
 }
 
 h5,
@@ -9,84 +14,91 @@ h3,
 h2,
 h1,
 p {
-    margin-top: 0rem;
-    margin-bottom: 0rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
 
 section {
-    margin-top: 2rem;
+  margin-top: 2rem;
+}
+
+input, button, textarea {
+  /* appearance: none; */
+  /* border: none; */
+  /* outline: none; */
+  /* background: none; */
 }
 
 .container {
-    background-color: lightblue;
+  background-color: lightblue;
 }
 
 .boxheader {
-    border: 1px solid black;
-    background-color: lightgray;
-    padding-top: .125rem;
-    padding-bottom: .125rem;
+  border: 1px solid black;
+  background-color: lightgray;
+  padding-top: .125rem;
+  padding-bottom: .125rem;
 }
 
 .center {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 #form-pkg-count {
-    display: none;
+  display: none;
 }
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #orderheader {
-    display: flex;
-    justify-content: space-between;
-    /* background-color: orange; */
+  display: flex;
+  justify-content: space-between;
+  /* background-color: orange; */
 }
 
 .orderbox {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .borderless {
-    border: none;
+  border: none;
 }
 
 .table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 .table,
 td {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .td-center {
-    text-align: center;
+  text-align: center;
 }
 
 .tablehalf {
-    column-width: 500px;
+  column-width: 500px;
 }
 
 #checkboxes {
-    display: flex;
-    justify-content: space-between;
-    width: 75%;
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
 }
 
 .box {
-    background-color: lightblue;
-    display: inline-flex;
+  background-color: lightblue;
+  display: inline-flex;
 }
 
 .checkbox {
-    width: 1.5rem;
-    height: 1.5rem;
-    border: 2px solid black;
-    margin-right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid black;
+  margin-right: 0.5rem;
 }
 
 .shiptotable,
@@ -95,82 +107,107 @@ td {
 }
 
 .smtablehalf {
-    column-width: 200px;
+  column-width: 200px;
 }
 
 .spacebetween {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .line {
-    background-color: greenyellow;
+  background-color: greenyellow;
 }
 
 #shipmentInformation {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 #signature,
 #date {
-    border-top: 1px solid black;
+  border-top: 1px solid black;
 }
 
 #signhere {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
 }
 
 #signature {
-    min-width: 30rem;
+  min-width: 30rem;
 }
 
 #date {
-    min-width: 10rem;
+  min-width: 10rem;
 }
 #spacer {
-    min-width: 5rem;
+  min-width: 5rem;
 }
 
 #formInvoice {
 }
 
 form.form-data {
-    display: table;
+  display: table;
 }
 
 div.form-data {
-    display: table-row;
-}
-
-label,
-input {
-    display: table-cell;
-    margin-bottom: 10px;
-}
-
-label {
-    padding-right: 10px;
+  display: table-row;
 }
 
 .flex-section {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .halfwidth{
-    min-width: 49vw;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+  min-width: 49vw;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .centertext {
-    text-align: center;
+  text-align: center;
 }
 
 .name {
-    height: 2rem;
-    border-bottom: 1px solid grey;<F5>
+  height: 2rem;
+  border-bottom: 1px solid grey;
 }
+
+#col-qty, #col-meas, #col-wt, #col-val {
+  flex-grow: .25;
+}
+
+#col-desc {
+  flex-grow: 6;
+}
+
+#form-desc {
+  width: 34rem;
+}
+
+
+#form-commodities, #form-weight{
+  width: 2rem;
+  padding: 0rem;
+  margin: 0rem;
+}
+
+#form-commodities {
+  text-align: center;
+}
+
+#form-value {
+  width: 4rem;
+}
+
+.form-grid {
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+
