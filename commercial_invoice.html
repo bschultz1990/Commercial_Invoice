@@ -76,7 +76,7 @@
 
 					<table class="table shiptotable">
 						<tr>
-							<td class="smtablehalf">Country of Export:</td>
+							<td class="smtablehalf">Country of Export/Origin:</td>
 							<td class="smtablehalf">United States</td>
 						</tr>
 						<tr>
@@ -102,7 +102,7 @@
 			<section class="flex-section">
 				<div id="col-qty">
 					<div class="boxheader bold centertext"><h3>Qty.</h3></div>
-					<input type="text" class="invis-form" name="form-commodities" id="form-commodities" placeholder="Qty.">
+					<input type="text" class="invis-form" name="form-qty" id="form-qty" placeholder="Qty.">
 				</div>
 				<div id="col-desc">
 					<div class="boxheader bold centertext"><h3>Commodity Description</h3></div>
@@ -132,42 +132,38 @@
 					<div class="flex-section">
 						<div class="ship-info centertext">
 							<h4>Shipped On:</h4>
-							<div id="shipdate"></div>
+							<div id="ship-date"></div>
 						</div>
 
 						<div class="ship-info centertext">
 							<h4>Method:</h4>
-							<div id="shipmethod"></div>
+							<div id="shipmethod">
+								<input type="text" class="invis-form" name="form-shipmethod" id="form-shipmethod" placeholder="Shipment Method">
+							</div>
 						</div>
 
 						<div class="ship-info centertext">
 							<h4>Tracking Number:</h4>
-							<div id="shiptracking"></div>
+							<div id="shiptracking">
+								<input type="text" class="invis-form" name="form-tracking1" id="form-tracking1" placeholder="Tracking #">
+							</div>
 						</div>
 
 					</div><!-- flex-section -->
 				</section>
 
 
-
-
-			
-
-
-
-			<!-- signature section -->
-			<section>
-				<!--  -->
-				<div class="spacebetween"></div>
-				<div id="signhere">
-					<div id="signature" class="line">Signature of shipper/exporter (print name, title, and sign)<br>I declare all the information contained in this invoice to be true and correct.</div>
-					<div id="spacer" class="line"></div>
-					<div id="date"class="line">Date</div>
-				</div>
-			</section>
-		</div>
+				<section class="spacebetween">
+					<div id="sig-col-1">
+						<div id="signature">SIGNATURE FILE HERE</div>
+						<div>Signature of shipper/exporter (print name, title, and sign)<br>I declare all the information contained in this invoice to be true and correct.</div>
+					</div>
+					<div id="sig-col-2">
+						<div id="sig-date">DATE HERE</div>
+					</div>
+				</section>
 		<!-- sheet -->
-		<input type="submit" value="Submit">
+		<!-- <input id="form-submit" type="submit" value="Submit"> -->
 		</form> <!-- form -->
 		
 	</div> <!-- container -->

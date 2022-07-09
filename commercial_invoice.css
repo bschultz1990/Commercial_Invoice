@@ -23,10 +23,10 @@ section {
 }
 
 input, button, textarea {
-  /* appearance: none; */
-  /* border: none; */
-  /* outline: none; */
-  /* background: none; */
+  appearance: none;
+  border: none;
+  outline: none;
+  background: yellow;
 }
 
 .container {
@@ -115,13 +115,10 @@ td {
   justify-content: space-between;
 }
 
-.line {
-  background-color: greenyellow;
-}
-
 #signature,
-#date {
-  border-top: 1px solid black;
+#sig-date {
+  border-bottom: 1px solid black;
+  min-width: 10rem;
 }
 
 #signhere {
@@ -134,14 +131,8 @@ td {
   min-width: 30rem;
 }
 
-#date {
-  min-width: 10rem;
-}
 #spacer {
   min-width: 5rem;
-}
-
-#formInvoice {
 }
 
 form.form-data {
@@ -182,17 +173,20 @@ div.form-data {
 }
 
 #form-desc {
-  width: 34rem;
+  width: 38rem;
 }
 
+#form-cst-name {
+  width: 21rem;
+}
 
-#form-commodities, #form-weight{
+#form-qty, #form-weight{
   width: 2rem;
   padding: 0rem;
   margin: 0rem;
 }
 
-#form-commodities {
+#form-qty {
   text-align: center;
 }
 
