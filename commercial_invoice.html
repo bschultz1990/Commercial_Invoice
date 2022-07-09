@@ -8,21 +8,6 @@
 </head>
 <body>
 	<div class="container">
-			<div class="form-data">
-				<!-- <input type="text" name="form-cst-address" id="form-cst-address"> -->
-			</div>
-
-				<div class="form-data">
-					<input type="button" value="-">
-					<input type="button" value="+">
-					
-					<input type="text" class="invis-form" name="form-description" placeholder="Description">
-					<input type="text" class="invis-form" name="form-weight" placeholder="Weight (lbs)">
-					<input type="text" class="invis-form" name="form-value" placeholder="Value $USD">
-				</div>
-
-
-	<!--================================================= ACTUAL PAGE ============================================ -->
 		<form action = "submit" id="form-submit" class="form-data">
 		<div id="sheet">
 			<section>
@@ -69,13 +54,6 @@
 					</div>
 				</div>
 			</section> <!-- flex-section -->
-
-
-
-
-
-
-
 
 			<section class="flex-section">
 				<div class="halfwidth">
@@ -138,10 +116,37 @@
 					<div class="boxheader bold centertext"><h3>Value</h3></div>
 					<input type="text" class="invis-form form-grid" name="form-value" id="form-value" placeholder="Value $">
 				</div>
+
 			</section>
 
+				<div class="flex-total">
+					<div><h4>Total:</h4></div>
+					<div id="totalValue"></div>
+				</div>
 
+				<section>
+					<div class="boxheader center">
+						<h3 class="bold">Shipment Information</h3>
+					</div> <!--invoice header-->
 
+					<div class="flex-section">
+						<div class="ship-info centertext">
+							<h4>Shipped On:</h4>
+							<div id="shipdate"></div>
+						</div>
+
+						<div class="ship-info centertext">
+							<h4>Method:</h4>
+							<div id="shipmethod"></div>
+						</div>
+
+						<div class="ship-info centertext">
+							<h4>Tracking Number:</h4>
+							<div id="shiptracking"></div>
+						</div>
+
+					</div><!-- flex-section -->
+				</section>
 
 
 
@@ -151,49 +156,6 @@
 
 
 
-
-
-
-			<section>
-				<table id="commodities" class="table">
-					<tbody>
-						<tr>
-							<th id="qty" class="boxheader bold"><h3>Qty.</h3></th>
-							<th id="unit" class="boxheader bold"><h3>Unit of Measure</h3></th>
-							<th id="desc" class="boxheader bold"><h3>Commodity Description</h3></th>
-							<th id="wt" class="boxheader bold"><h3>Wt.</h3></th>
-							<th id="value" class="boxheader bold"><h3>Unit Value</h3></th>
-						</tr>
-					</tbody>
-				</table>
-				
-			</section>
-			<section class="orderdate spacebetween">
-				<div class="bold">Total:</div>
-				<div id="totalValue" class="bold"></div>
-			</section>
-			
-			<!-- shipment information -->
-			<section>
-				<div id="shipemtInformation" class="boxheader center">
-					<h3 class="bold">Shipment Information</h3>
-				</div> <!--invoice header-->
-				<table id="shippingTable" class="table">
-					<tbody>
-						<tr>
-							<th>Shipped On:</th>
-							<th>Method:</th>
-							<th>Tracking Number:</th>
-						</tr>
-						<tr>
-							<td class="td-center"></td>
-							<td class="td-center"></td>
-							<td class="td-center"></td>
-						</tr>
-					</tbody>
-				</table>
-			</section>
-			
 			<!-- signature section -->
 			<section>
 				<!--  -->

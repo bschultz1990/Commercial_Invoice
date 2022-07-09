@@ -1,12 +1,6 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/insertRow
 // https://snippet-generator.app/
 
-let units = [
-    [1, "Pounds", "Harman & Heatilator Vacuum Pressure Differential Switch, OEM", 0.2, 20.95],
-    [2, "Pounds", "Misc. Item", 5, 30],
-    [1, "Pounds", "Harman Igniter - AMP-HIFIN", 1.5, 60.99],
-];
-
 let itemTable = document.getElementById("commodities"); // get table data
 
 function addItems(array) {
