@@ -14,19 +14,7 @@ const btnPlus = document.getElementById("buttonPlus")
 const btnMinus = document.getElementById("buttonMinus")
 
 const invisForm = document.querySelectorAll(".invis-form")
-// console.dir(invisForm){{{
-// 0: Order Num
-// 1: Date
-// 2: Cst. Name
-// 3: Cst. Address
-// 4: Pkg. Count
-// 5: Item Qty 1
-// 6: Item Desc. 1
-// 7: Item Wt. 1
-// 8: Item Value 1
-// 9: Shipment Method 1
-// 10: Shipment Tracking 1
-// 11: Sig File}}}
+console.dir(invisForm)
 
 invisForm[1].addEventListener("change", function (e) {
 	// update dates
@@ -35,7 +23,7 @@ invisForm[1].addEventListener("change", function (e) {
 });
 
 
-invisForm[11].addEventListener("change", function (e){
+sigFile.addEventListener("change", function (e){
 	const sigImg = document.querySelector('#sig-img')
 	URL.revokeObjectURL(e.target.files[0].name)
 	sigImg.src = URL.createObjectURL(e.target.files[0]); // Assign source to image
@@ -43,41 +31,41 @@ invisForm[11].addEventListener("change", function (e){
 });
 
 
-btnPlus.addEventListener("click", function (e) {
-	e.preventDefault();
-	const newQty = document.createElement("input")
-	newQty.type = "text"
-	newQty.classList.add("invis-form")
-	newQty.classList.add("form-qty")
-	newQty.name = "form-qty"
-	newQty.placeholder = "QAA!"
-	colQty[0].appendChild(newQty); // 0=qty col index
+// btnPlus.addEventListener("click", function (e) {
+// 	e.preventDefault();
+// 	const newQty = document.createElement("input")
+// 	newQty.type = "text"
+// 	newQty.classList.add("invis-form")
+// 	newQty.classList.add("form-qty")
+// 	newQty.name = "form-qty"
+// 	newQty.placeholder = "QAA!"
+// 	colQty[0].appendChild(newQty); // 0=qty col index
 
-	const newDesc = document.createElement("input")
-	newDesc.type = "text"
-	newDesc.classList.add("invis-form")
-	newDesc.classList.add("form-desc")
-	newDesc.name = "form-desc"
-	newDesc.placeholder = "DESC"
-	colQty[1].appendChild(newDesc); // 1=desc col index
+// 	const newDesc = document.createElement("input")
+// 	newDesc.type = "text"
+// 	newDesc.classList.add("invis-form")
+// 	newDesc.classList.add("form-desc")
+// 	newDesc.name = "form-desc"
+// 	newDesc.placeholder = "DESC"
+// 	colQty[1].appendChild(newDesc); // 1=desc col index
 
-	const newWt = document.createElement("input")
-	newWt.type = "text"
-	newWt.classList.add("invis-form")
-	newWt.classList.add("form-weight")
-	newWt.name = "form-weight"
-	newWt.placeholder = "WT"
-	colQty[2].appendChild(newWt);
+// 	const newWt = document.createElement("input")
+// 	newWt.type = "text"
+// 	newWt.classList.add("invis-form")
+// 	newWt.classList.add("form-weight")
+// 	newWt.name = "form-weight"
+// 	newWt.placeholder = "WT"
+// 	colQty[2].appendChild(newWt);
 
-	const newVal = document.createElement("input")
-	newVal.type = "text"
-	newVal.classList.add("invis-form")
-	newVal.classList.add("form-value")
-	newVal.name = "form-value"
-	newVal.placeholder = "Value $"
-	colQty[3].appendChild(newVal)
+// 	const newVal = document.createElement("input")
+// 	newVal.type = "text"
+// 	newVal.classList.add("invis-form")
+// 	newVal.classList.add("form-value")
+// 	newVal.name = "form-value"
+// 	newVal.placeholder = "Value $"
+// 	colQty[3].appendChild(newVal)
 	
-})
+// })
 
 
 
