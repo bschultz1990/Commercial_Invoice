@@ -5,12 +5,13 @@ const date = document.getElementById("form-date")
 const shipDate = document.getElementById("ship-date")
 const sigDate = document.getElementById("sig-date")
 const sigFile = document.getElementById("sig-file")
-const formQty = document.getElementById("form-qty")	// formQty.value
-
+const formQty = document.querySelectorAll(".form-qty")
+const formWt = document.querySelectorAll(".form-weight")
+const formVal = document.querySelectorAll(".form-value")
 
 const invisForm = document.querySelectorAll(".invis-form")
-console.dir(invisForm)
-// 0: Order Num{{{
+// console.dir(invisForm){{{
+// 0: Order Num
 // 1: Date
 // 2: Cst. Name
 // 3: Cst. Address
@@ -28,6 +29,23 @@ invisForm[1].addEventListener("change", function (e) {
 	shipDate.innerText = date.value
 	sigDate.innerText = date.value
 });
+
+function addValues () {
+	console.dir(formQty[i])
+}
+
+console.dir(formQty)
+
+for (let i of formQty) {
+	if (formQty.length > 1) {
+		console.log("LENGTH GREATER THAN ONE!");
+	} else {
+		console.log("SINGLE ELEMENT.");
+	}
+	// formQty[i].addEventListener("change", addValues())
+	// console.dir(parseInt(formQty[i].value))
+	// console.dir (i)
+}
 
 invisForm[11].addEventListener("change", function (e){
 	const sigImg = document.querySelector('#sig-img')
