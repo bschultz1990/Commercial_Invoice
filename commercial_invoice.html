@@ -15,7 +15,9 @@
 					<h3 class="bold">Commercial Invoice</h3>
 				</div> <!--invoice header-->
 				<div id="orderheader">
-					<div><p class="bold">Pellethead.com</p></div>
+					<div class="headerpadding">
+						<p class="bold">Pellethead.com</p>
+					</div>
 					<div class="orderbox">
 						<table class="table borderless" id="orderTable">
 							<tr>
@@ -36,8 +38,8 @@
 					<div class="boxheader bold">
 						<h3 class="centertext">Ship From</h3>
 					</div>
-					<div class="name">
-						<h4>Pellethead.com</h4>
+					<div class="name headerpadding">
+							<h4>Pellethead.com</h4>
 					</div> <!-- name -->
 					<div>W9715 State Road 96<br>PO Box 167<br>Dale, WI<br> 54931<br>920-779-6647<br>http://www.pellethead.com</div>
 				</div> <!-- halfwidth -->
@@ -50,7 +52,7 @@
 						<input class="invis-form" type="text" name="form-cst-name" id="form-cst-name" placeholder="Cst. Full Name">
 					</div>	
 					<div>
-						<textarea class="invis-form" name="form-cst-address" id="form-cst-address" cols="40" rows="6" placeholder="Cst. Address"></textarea>
+						<textarea class="invis-form" name="form-cst-address" id="form-cst-address" cols="40" rows="7" placeholder="Cst. Address"></textarea>
 					</div>
 				</div>
 			</section> <!-- flex-section -->
@@ -60,7 +62,9 @@
 					<div class="boxheader bold">
 						<h3 class="centertext">Importer Other Than Recipient</h3>
 					</div>
-					<div>Earth Sense Energy Systems<br>CL 380782<br>W9715 State Road 96<br>Dale, WI 54931<br>920-779-6647 / 800-236-6647</div>
+					<div class="headerpadding">
+						Earth Sense Energy Systems<br>CL 380782<br>W9715 State Road 96<br>Dale, WI 54931<br>920-779-6647 / 800-236-6647
+					</div>
 				</div> <!-- halfwidth -->
 
 				<div class="halfwidth">
@@ -68,40 +72,44 @@
 						<h3 class="centertext">Ship To</h3>
 					</div> <!-- boxheader -->
 
-					<div id="checkboxes">
-						<div class="box"><div class="checkbox"></div class="bold">CIF</div>
-						<div class="box"><div class="checkbox"></div class="bold">FOB</div>
-						<div class="box"><div class="checkbox"></div class="bold">C&F</div>
-					</div>
+					<div class="headerpadding">
+						<div id="checkboxes">
+							<div class="box"><div class="checkbox"></div class="bold">CIF</div>
+							<div class="box"><div class="checkbox"></div class="bold">FOB</div>
+							<div class="box"><div class="checkbox"></div class="bold">C&F</div>
+						</div>
 
-					<table class="table shiptotable">
-						<tr>
-							<td class="smtablehalf">Country of Export/Origin:</td>
-							<td class="smtablehalf">United States</td>
-						</tr>
-						<tr>
-							<td>Country of Destination:</td>
-							<td id="countrydest"></td>
-						</tr>
-						<tr>
-							<td>Currency:</td>
-							<td>US Dollar</td>
-						</tr>
-						<tr>
-							<td>Package Count:</td>
-							<td id="pkgcount"><input type="number" class="invis-form" name="form-pkg-count" id="form-pkg-count" placeholder="Pkg. Count"></td>
-						</tr>
-						<tr>
-							<td>Total Weight:</td>
-							<td id="totalweight"></td>
-						</tr>
-					</table>
+						<table class="table shiptotable">
+							<tr>
+								<td class="smtablehalf">Country of Export/Origin:</td>
+								<td class="smtablehalf">United States</td>
+							</tr>
+							<tr>
+								<td>Country of Destination:</td>
+								<td id="countrydest"></td>
+							</tr>
+							<tr>
+								<td>Currency:</td>
+								<td>US Dollar</td>
+							</tr>
+							<tr>
+								<td>Package Count:</td>
+								<td id="pkgcount"><input type="number" class="invis-form" name="form-pkg-count" id="form-pkg-count" placeholder="Pkg. Count"></td>
+							</tr>
+							<tr>
+								<td>Total Weight:</td>
+								<td id="totalweight"></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</section><!-- flex-section -->
 
 			<section class="flex-section">
 				<div id="col-qty">
-					<div class="boxheader bold centertext"><h3>Qty.</h3></div>
+					<div id="form-qty-flex" class="boxheader bold centertext">
+						<h3>Qty.</h3>
+					</div>
 					<input type="text" class="invis-form" name="form-qty" id="form-qty" placeholder="Qty.">
 				</div>
 				<div id="col-desc">
@@ -120,7 +128,7 @@
 			</section>
 
 				<div class="flex-total">
-					<div><h4>Total:</h4></div>
+					<div><h3>Total:</h3></div>
 					<div id="totalValue"></div>
 				</div>
 
@@ -152,16 +160,22 @@
 					</div><!-- flex-section -->
 				</section>
 
+				<section>
+					<input type="file" id="sig-file" class="invis-form" accept="image/*" name="signature file" placeholder="Upload Signature Image">
+				</section>
 
-				<section class="spacebetween">
+				<section id="sig-section" class="spacebetween">
 					<div id="sig-col-1">
-						<div id="signature">SIGNATURE FILE HERE</div>
+						<div id="signature">
+							<img id="sig-img" src="" alt="UPLOAD SIGNATURE IMAGE">
+						</div>
 						<div>Signature of shipper/exporter (print name, title, and sign)<br>I declare all the information contained in this invoice to be true and correct.</div>
 					</div>
 					<div id="sig-col-2">
 						<div id="sig-date">DATE HERE</div>
 					</div>
 				</section>
+				
 		<!-- sheet -->
 		<!-- <input id="form-submit" type="submit" value="Submit"> -->
 		</form> <!-- form -->

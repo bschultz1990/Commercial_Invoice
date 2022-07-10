@@ -1,5 +1,5 @@
 :root {
-  --headPadding: .125rem;
+  --headPadding: .25rem;
   font-size: smaller;
 }
 
@@ -24,9 +24,19 @@ section {
 
 input, button, textarea {
   appearance: none;
-  border: none;
+  border: 1px solid grey;
   outline: none;
   background: yellow;
+}
+
+.invis-form {
+  height: 2rem;
+  font-family: calibri;
+}
+
+#form-cst-address {
+  height: fit-content;
+  font-size: small;
 }
 
 .container {
@@ -36,17 +46,18 @@ input, button, textarea {
 .boxheader {
   border: 1px solid black;
   background-color: lightgray;
-  padding-top: .125rem;
-  padding-bottom: .125rem;
+  padding: 0.125rem;
 }
 
 .center {
   display: flex;
   justify-content: center;
 }
+
 #form-pkg-count {
   display: none;
 }
+
 .bold {
   font-weight: bold;
 }
@@ -54,33 +65,10 @@ input, button, textarea {
 #orderheader {
   display: flex;
   justify-content: space-between;
-  /* background-color: orange; */
-}
-
-.orderbox {
-  border: 1px solid black;
 }
 
 .borderless {
   border: none;
-}
-
-.table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.table,
-td {
-  border: 1px solid black;
-}
-
-.td-center {
-  text-align: center;
-}
-
-.tablehalf {
-  column-width: 500px;
 }
 
 #checkboxes {
@@ -90,8 +78,8 @@ td {
 }
 
 .box {
-  background-color: lightblue;
   display: inline-flex;
+  align-items: center;
 }
 
 .checkbox {
@@ -115,32 +103,23 @@ td {
   justify-content: space-between;
 }
 
-#signature,
-#sig-date {
-  border-bottom: 1px solid black;
-  min-width: 10rem;
+#sig-section {
+  margin-top: 0rem;
 }
 
-#signhere {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 3rem;
+#signature,
+#sig-date {
+  min-width: 10rem;
+  vertical-align: middle;
+}
+
+#sig-date {
+  align-self: flex-end;
+  text-align: right;
 }
 
 #signature {
   min-width: 30rem;
-}
-
-#spacer {
-  min-width: 5rem;
-}
-
-form.form-data {
-  display: table;
-}
-
-div.form-data {
-  display: table-row;
 }
 
 .flex-section {
@@ -150,9 +129,6 @@ div.form-data {
 
 .halfwidth{
   min-width: 49vw;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
 }
 
 .centertext {
@@ -161,7 +137,6 @@ div.form-data {
 
 .name {
   height: 2rem;
-  border-bottom: 1px solid grey;
 }
 
 #col-qty, #col-meas, #col-wt, #col-val {
@@ -178,10 +153,16 @@ div.form-data {
 
 #form-cst-name {
   width: 21rem;
+  font-weight: bold;
+}
+
+#form-qty-flex {
+  display: flex;
+  justify-content: center;
 }
 
 #form-qty, #form-weight{
-  width: 2rem;
+  width: 2.5rem;
   padding: 0rem;
   margin: 0rem;
 }
@@ -192,6 +173,7 @@ div.form-data {
 
 #form-value {
   width: 4rem;
+  text-align: right;
 }
 
 .flex-total {
@@ -205,4 +187,37 @@ div.form-data {
   padding-top: .25rem;
   padding-bottom: .25rem;
   flex-grow: 1;
+}
+
+#ship-date {
+  padding-top: .125rem;
+}
+
+#sig-img {
+  max-width: 75%
+}
+
+#sig-col-2 {
+  display: flex;
+}
+
+#form-shipmethod {
+  width: 25rem;
+  text-align: center;
+}
+
+.headerpadding {
+  padding-top: var(--headPadding);
+}
+
+@media print {
+  #sig-file {
+    display: none;
+  }
+  input, button, textarea {
+    border: none;
+    outline: none;
+    background: none;
+    appearance: none;
+  }
 }

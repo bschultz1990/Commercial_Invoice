@@ -4,14 +4,36 @@
 const date = document.getElementById("form-date")
 const shipDate = document.getElementById("ship-date")
 const sigDate = document.getElementById("sig-date")
-
+const sigFile = document.getElementById("sig-file")
 const formQty = document.getElementById("form-qty")	// formQty.value
 
+
 const invisForm = document.querySelectorAll(".invis-form")
+console.dir(invisForm)
+// 0: Order Num{{{
+// 1: Date
+// 2: Cst. Name
+// 3: Cst. Address
+// 4: Pkg. Count
+// 5: Item Qty 1
+// 6: Item Desc. 1
+// 7: Item Wt. 1
+// 8: Item Value 1
+// 9: Shipment Method 1
+// 10: Shipment Tracking 1
+// 11: Sig File}}}
+
 invisForm[1].addEventListener("change", function (e) {
 	// update dates
 	shipDate.innerText = date.value
 	sigDate.innerText = date.value
+});
+
+invisForm[11].addEventListener("change", function (e){
+	const sigImg = document.querySelector('#sig-img')
+	URL.revokeObjectURL(e.target.files[0].name)
+	sigImg.src = URL.createObjectURL(e.target.files[0]); // Assign source to image
+	console.dir(sigImg.src)
 });
 
 
