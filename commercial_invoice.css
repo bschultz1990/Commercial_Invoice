@@ -161,17 +161,17 @@ input, button, textarea {
   justify-content: center;
 }
 
-#form-qty, #form-weight{
+.form-qty, .form-weight{
   width: 2.5rem;
   padding: 0rem;
   margin: 0rem;
 }
 
-#form-qty {
+.form-qty {
   text-align: center;
 }
 
-#form-value {
+.form-value {
   width: 4rem;
   text-align: right;
 }
@@ -208,6 +208,11 @@ input, button, textarea {
 
 .headerpadding {
   padding-top: var(--headPadding);
+}
+
+#col-buttons {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 @media print {

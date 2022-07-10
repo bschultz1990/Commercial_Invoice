@@ -30,22 +30,6 @@ invisForm[1].addEventListener("change", function (e) {
 	sigDate.innerText = date.value
 });
 
-function addValues () {
-	console.dir(formQty[i])
-}
-
-console.dir(formQty)
-
-for (let i of formQty) {
-	if (formQty.length > 1) {
-		console.log("LENGTH GREATER THAN ONE!");
-	} else {
-		console.log("SINGLE ELEMENT.");
-	}
-	// formQty[i].addEventListener("change", addValues())
-	// console.dir(parseInt(formQty[i].value))
-	// console.dir (i)
-}
 
 invisForm[11].addEventListener("change", function (e){
 	const sigImg = document.querySelector('#sig-img')
@@ -55,6 +39,17 @@ invisForm[11].addEventListener("change", function (e){
 });
 
 
+
+
+
+	function eventAdder(multiSelector) {
+	for (let i of multiSelector) {
+		console.dir(i);
+		i.addEventListener("change", function addValues (i){
+			console.dir(parseInt(i.value));
+		})
+		}
+}
 
 
 
