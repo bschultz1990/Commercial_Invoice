@@ -5,9 +5,13 @@ const date = document.getElementById("form-date")
 const shipDate = document.getElementById("ship-date")
 const sigDate = document.getElementById("sig-date")
 const sigFile = document.getElementById("sig-file")
+const colQty = document.querySelectorAll(".row")
 const formQty = document.querySelectorAll(".form-qty")
+const formDesc = document.querySelectorAll(".form-desc")
 const formWt = document.querySelectorAll(".form-weight")
 const formVal = document.querySelectorAll(".form-value")
+const btnPlus = document.getElementById("buttonPlus")
+const btnMinus = document.getElementById("buttonMinus")
 
 const invisForm = document.querySelectorAll(".invis-form")
 // console.dir(invisForm){{{
@@ -39,68 +43,98 @@ invisForm[11].addEventListener("change", function (e){
 });
 
 
+btnPlus.addEventListener("click", function (e) {
+	e.preventDefault();
+	const newQty = document.createElement("input")
+	newQty.type = "text"
+	newQty.classList.add("invis-form")
+	newQty.classList.add("form-qty")
+	newQty.name = "form-qty"
+	newQty.placeholder = "QAA!"
+	colQty[0].appendChild(newQty); // 0=qty col index
+
+	const newDesc = document.createElement("input")
+	newDesc.type = "text"
+	newDesc.classList.add("invis-form")
+	newDesc.classList.add("form-desc")
+	newDesc.name = "form-desc"
+	newDesc.placeholder = "DESC"
+	colQty[1].appendChild(newDesc); // 1=desc col index
+
+	const newWt = document.createElement("input")
+	newWt.type = "text"
+	newWt.classList.add("invis-form")
+	newWt.classList.add("form-weight")
+	newWt.name = "form-weight"
+	newWt.placeholder = "WT"
+	colQty[2].appendChild(newWt);
+
+	const newVal = document.createElement("input")
+	newVal.type = "text"
+	newVal.classList.add("invis-form")
+	newVal.classList.add("form-value")
+	newVal.name = "form-value"
+	newVal.placeholder = "Value $"
+	colQty[3].appendChild(newVal)
+	
+})
 
 
 
-	function eventAdder(multiSelector) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//{{{
+
+function addListener(multiSelector) {
 	for (let i of multiSelector) {
 		console.dir(i);
 		i.addEventListener("change", function addValues (i){
 			console.dir(parseInt(i.value));
 		})
 		}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}//}}}
 
 
 

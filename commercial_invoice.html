@@ -105,31 +105,46 @@
 				</div>
 			</section><!-- flex-section -->
 
-			<section class="flex-section">
-				<div id="col-buttons" class="boxheader">
-					<button class="invis-form">-</button>
-					<button class="invis-form">+</button>
-				</div>
-				<div id="col-qty">
-					<div id="form-qty-flex" class="boxheader bold centertext">
-						<h3>Qty.</h3>
-					</div>
-					<input type="text" class="invis-form form-qty" name="form-qty" placeholder="Qty.">
-				</div>
-				<div id="col-desc">
-					<div class="boxheader bold centertext"><h3>Commodity Description</h3></div>
-					<input type="text" class="invis-form" name="form-desc" id="form-desc" placeholder="Description">
-				</div>
-				<div id="col-wt">
-					<div class="boxheader bold centertext"><h3>Wt. (lbs)</h3></div>
-					<input type="text" class="invis-form form-weight" name="form-weight" placeholder="Wt.">
-				</div>
-				<div id="col-val">
-					<div class="boxheader bold centertext"><h3>Value</h3></div>
-					<input type="text" class="invis-form form-value" name="form-value" placeholder="Value $">
-				</div>
 
+
+
+
+			<section id="sec-commodities">
+				<div id="col-buttons">
+					<button id="buttonMinus" class="invis-form">-</button>
+					<button id="buttonPlus" class="invis-form">+</button>
+				</div> <!-- col-buttons -->
+
+				<div id="grid-wrapper">
+						<div class="boxheader bold centertext col1">
+							<h3>Qty.</h3>
+						</div>
+						<div class="boxheader bold centertext col2">
+							<h3>Commodity Description</h3>
+						</div>
+						<div class="boxheader bold centertext" col3>
+							<h3>Wt. (lbs.)</h3>
+						</div>
+						<div class="boxheader bold centertext" col4>
+							<h3>Value</h3>
+						</div>
+
+						<input type="text" class="invis-form form-qty " name="form-qty" placeholder="Qty.">
+						<input type="text" class="invis-form form-desc" name="form-desc" placeholder="Description">
+						<input type="text" class="invis-form form-weight" name="form-weight" placeholder="Wt.">
+						<input type="text" class="invis-form form-value" name="form-value" placeholder="Value $">
+						<input type="text" class="invis-form form-qty " name="form-qty" placeholder="Qty.">
+						<input type="text" class="invis-form form-desc" name="form-desc" placeholder="Description">
+						<input type="text" class="invis-form form-weight" name="form-weight" placeholder="Wt.">
+						<input type="text" class="invis-form form-value" name="form-value" placeholder="Value $">
+				</div>
 			</section>
+
+
+
+
+
+
 
 				<div class="flex-total">
 					<div><h3>Total:</h3></div>
