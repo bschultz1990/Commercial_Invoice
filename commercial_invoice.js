@@ -5,7 +5,7 @@ const date = document.getElementById("form-date")
 const shipDate = document.getElementById("ship-date")
 const sigDate = document.getElementById("sig-date")
 const sigFile = document.getElementById("sig-file")
-const colQty = document.querySelectorAll(".row")
+const row = document.querySelectorAll(".row")
 const formQty = document.querySelectorAll(".form-qty")
 const formDesc = document.querySelectorAll(".form-desc")
 const formWt = document.querySelectorAll(".form-weight")
@@ -16,7 +16,7 @@ const btnMinus = document.getElementById("buttonMinus")
 const invisForm = document.querySelectorAll(".invis-form")
 console.dir(invisForm)
 
-invisForm[1].addEventListener("change", function (e) {
+date.addEventListener("change", function (e) {
 	// update dates
 	shipDate.innerText = date.value
 	sigDate.innerText = date.value
@@ -31,22 +31,23 @@ sigFile.addEventListener("change", function (e){
 });
 
 
-// btnPlus.addEventListener("click", function (e) {
-// 	e.preventDefault();
-// 	const newQty = document.createElement("input")
-// 	newQty.type = "text"
-// 	newQty.classList.add("invis-form")
-// 	newQty.classList.add("form-qty")
-// 	newQty.name = "form-qty"
-// 	newQty.placeholder = "QAA!"
-// 	colQty[0].appendChild(newQty); // 0=qty col index
+btnPlus.addEventListener("click", function (e) {
+	e.preventDefault();
+	const newQty = document.createElement("input")
+	newQty.type = "text"
+	newQty.classList.add("invis-form")
+	newQty.classList.add("form-qty")
+	newQty.name = "form-qty"
+	newQty.placeholder = "Qty.!"
 
+	row[row.length].appendChild(newQty); // 0=qty col index
+}
 // 	const newDesc = document.createElement("input")
 // 	newDesc.type = "text"
 // 	newDesc.classList.add("invis-form")
 // 	newDesc.classList.add("form-desc")
 // 	newDesc.name = "form-desc"
-// 	newDesc.placeholder = "DESC"
+// 	newDesc.placeholder = "Description"
 // 	colQty[1].appendChild(newDesc); // 1=desc col index
 
 // 	const newWt = document.createElement("input")
@@ -54,7 +55,7 @@ sigFile.addEventListener("change", function (e){
 // 	newWt.classList.add("invis-form")
 // 	newWt.classList.add("form-weight")
 // 	newWt.name = "form-weight"
-// 	newWt.placeholder = "WT"
+// 	newWt.placeholder = "Wt."
 // 	colQty[2].appendChild(newWt);
 
 // 	const newVal = document.createElement("input")
@@ -113,16 +114,14 @@ sigFile.addEventListener("change", function (e){
 
 
 
-//{{{
-
-function addListener(multiSelector) {
-	for (let i of multiSelector) {
-		console.dir(i);
-		i.addEventListener("change", function addValues (i){
-			console.dir(parseInt(i.value));
-		})
-		}
-}//}}}
+// function addListener(multiSelector) {
+// 	for (let i of multiSelector) {
+// 		console.dir(i);
+// 		i.addEventListener("change", function addValues (i){
+// 			console.dir(parseInt(i.value));
+// 		})
+// 		}
+//} 
 
 
 
