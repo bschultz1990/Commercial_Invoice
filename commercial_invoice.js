@@ -81,7 +81,10 @@ btnMinus.addEventListener("click", function (e){
 	}
 });
 
-
+// TODO: Add the weights together.
+formWt.addEventListener("change", function(e){
+	e.preventDefault();
+})
 
 
 
