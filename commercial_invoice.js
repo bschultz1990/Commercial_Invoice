@@ -5,7 +5,7 @@ const date = document.getElementById("form-date")
 const shipDate = document.getElementById("ship-date")
 const sigDate = document.getElementById("sig-date")
 const sigFile = document.getElementById("sig-file")
-const row = document.querySelectorAll(".row")
+const gridWrapper = document.getElementById("grid-wrapper")
 const formQty = document.querySelectorAll(".form-qty")
 const formDesc = document.querySelectorAll(".form-desc")
 const formWt = document.querySelectorAll(".form-weight")
@@ -14,7 +14,6 @@ const btnPlus = document.getElementById("buttonPlus")
 const btnMinus = document.getElementById("buttonMinus")
 
 const invisForm = document.querySelectorAll(".invis-form")
-console.dir(invisForm)
 
 date.addEventListener("change", function (e) {
 	// update dates
@@ -38,39 +37,49 @@ btnPlus.addEventListener("click", function (e) {
 	newQty.classList.add("invis-form")
 	newQty.classList.add("form-qty")
 	newQty.name = "form-qty"
-	newQty.placeholder = "Qty.!"
+	newQty.placeholder = "Qty."
+	// console.dir(gridWrapper)
+	gridWrapper.appendChild(newQty);
 
-	row[row.length].appendChild(newQty); // 0=qty col index
-}
-// 	const newDesc = document.createElement("input")
-// 	newDesc.type = "text"
-// 	newDesc.classList.add("invis-form")
-// 	newDesc.classList.add("form-desc")
-// 	newDesc.name = "form-desc"
-// 	newDesc.placeholder = "Description"
-// 	colQty[1].appendChild(newDesc); // 1=desc col index
+	const newDesc = document.createElement("input")
+	newDesc.type = "text"
+	newDesc.classList.add("invis-form")
+	newDesc.classList.add("form-desc")
+	newDesc.name = "form-desc"
+	newDesc.placeholder = "Description"
+	gridWrapper.appendChild(newDesc); // 1=desc col index
 
-// 	const newWt = document.createElement("input")
-// 	newWt.type = "text"
-// 	newWt.classList.add("invis-form")
-// 	newWt.classList.add("form-weight")
-// 	newWt.name = "form-weight"
-// 	newWt.placeholder = "Wt."
-// 	colQty[2].appendChild(newWt);
+	const newWt = document.createElement("input")
+	newWt.type = "text"
+	newWt.classList.add("invis-form")
+	newWt.classList.add("form-weight")
+	newWt.name = "form-weight"
+	newWt.placeholder = "Wt."
+	gridWrapper.appendChild(newWt);
 
-// 	const newVal = document.createElement("input")
-// 	newVal.type = "text"
-// 	newVal.classList.add("invis-form")
-// 	newVal.classList.add("form-value")
-// 	newVal.name = "form-value"
-// 	newVal.placeholder = "Value $"
-// 	colQty[3].appendChild(newVal)
-	
-// })
-
+	const newVal = document.createElement("input")
+	newVal.type = "text"
+	newVal.classList.add("invis-form")
+	newVal.classList.add("form-value")
+	newVal.name = "form-value"
+	newVal.placeholder = "Value $"
+	gridWrapper.appendChild(newVal)
+})
 
 
+btnMinus.addEventListener("click", function (e){
+	e.preventDefault();
 
+	const matchTest = gridWrapper.lastElementChild.classList.value
+	if (new RegExp('boxheader').test(matchTest) === false) {
+		console.log("No match. Deleting row...");
+		for (let i = 0; i < 4; i++) {
+			gridWrapper.lastElementChild.remove();
+		}
+	} else {
+		console.log(`Found header row. Not deleting.`);
+	}
+});
 
 
 
@@ -170,7 +179,7 @@ btnPlus.addEventListener("click", function (e) {
 
 // // Submit Button Magic
 // const formSubmit = document.getElementById("form-submit");
-// formSubmit.addEventListener("submit", function (e) {
+// formSubmit.addEventListener("submit", function (e)) {
 //     e.preventDefault(); // Don't refresh the page.
 
 //     orderTable.rows[0].cells[1].innerText = formOrder.value;
@@ -190,4 +199,3 @@ btnPlus.addEventListener("click", function (e) {
 //     shiptotable.rows[3].cells[1].innerText = formPkgCount.valueAsNumber;
 
 //     // Item Details
-// });
