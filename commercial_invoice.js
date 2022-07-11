@@ -8,14 +8,17 @@ const sigFile = document.getElementById("sig-file")
 const gridWrapper = document.getElementById("grid-wrapper")
 const formQty = document.querySelectorAll(".form-qty")
 const formDesc = document.querySelectorAll(".form-desc")
-const formWt = document.querySelectorAll(".form-weight")
+let formWt = document.querySelectorAll(".form-weight")
+const totalWt = document.getElementById("totalweight")
 const formVal = document.querySelectorAll(".form-value")
 const btnPlus = document.getElementById("buttonPlus")
 const btnMinus = document.getElementById("buttonMinus")
-
 const invisForm = document.querySelectorAll(".invis-form")
 
+let rowCount = 1
+
 date.addEventListener("change", function (e) {
+	e.preventDefault();
 	// update dates
 	shipDate.innerText = date.value
 	sigDate.innerText = date.value
@@ -23,6 +26,7 @@ date.addEventListener("change", function (e) {
 
 
 sigFile.addEventListener("change", function (e){
+	e.preventDefault();
 	const sigImg = document.querySelector('#sig-img')
 	URL.revokeObjectURL(e.target.files[0].name)
 	sigImg.src = URL.createObjectURL(e.target.files[0]); // Assign source to image
@@ -32,60 +36,93 @@ sigFile.addEventListener("change", function (e){
 
 btnPlus.addEventListener("click", function (e) {
 	e.preventDefault();
+
+	rowCount++
+	
 	const newQty = document.createElement("input")
 	newQty.type = "text"
+	newQty.id = `form-qty-${rowCount}`
 	newQty.classList.add("invis-form")
 	newQty.classList.add("form-qty")
-	newQty.name = "form-qty"
+	newQty.name = `form-qty-${rowCount}`
 	newQty.placeholder = "Qty."
 	// console.dir(gridWrapper)
 	gridWrapper.appendChild(newQty);
 
 	const newDesc = document.createElement("input")
 	newDesc.type = "text"
+	newDesc.id = `form-desc-${rowCount}`
 	newDesc.classList.add("invis-form")
 	newDesc.classList.add("form-desc")
-	newDesc.name = "form-desc"
+	newDesc.name = `form-desc-${rowCount}`
 	newDesc.placeholder = "Description"
 	gridWrapper.appendChild(newDesc); // 1=desc col index
 
 	const newWt = document.createElement("input")
 	newWt.type = "text"
+	newWt.id = `form-weight-${rowCount}`
 	newWt.classList.add("invis-form")
 	newWt.classList.add("form-weight")
-	newWt.name = "form-weight"
+	newWt.name = `form-weight-${rowCount}`
 	newWt.placeholder = "Wt."
 	gridWrapper.appendChild(newWt);
 
 	const newVal = document.createElement("input")
 	newVal.type = "text"
+	newVal.id = `form-value-${rowCount}`
 	newVal.classList.add("invis-form")
 	newVal.classList.add("form-value")
-	newVal.name = "form-value"
+	newVal.name = `form-value-${rowCount}`
 	newVal.placeholder = "Value $"
 	gridWrapper.appendChild(newVal)
-})
 
+	formWt = document.querySelectorAll(".form-weight")
+	formWt.addEventListener("change", {
+
+	})
+	for (const i of formWt) {
+		i.addEventListener("change", function (e) {
+			e.preventDefault();
+			console.dir(i.value);
+		})
+	}
+
+	// formWt[0].addEventListener("blur", addWeights())
+
+	// function addWeights() {
+	// 	console.log(rowCount);
+	// 	console.log(parseInt(formWt[rowCount-1].value));
+	// }
+})
 
 btnMinus.addEventListener("click", function (e){
 	e.preventDefault();
 
-	const matchTest = gridWrapper.lastElementChild.classList.value
-	if (new RegExp('boxheader').test(matchTest) === false) {
+	const matchTest = gridWrapper.lastElementChild.id
+	if (new RegExp('form-value-1').test(matchTest) === false) {
 		console.log("No match. Deleting row...");
 		for (let i = 0; i < 4; i++) {
 			gridWrapper.lastElementChild.remove();
 		}
+		rowCount--
 	} else {
-		console.log(`Found header row. Not deleting.`);
+		console.log(`Found first row. Not deleting.`);
 	}
 });
 
+
+
+
+
+function listenAdder(element, listener, functionAction) {
+	for (i of element) {
+		i.addEventListener(listener, functionAction)
+	}
+}
+
+
 // TODO: Add event listeners to each item in this array.
 // TODO: Add the weights together.
-formWt.addEventListener("change", function(e){
-	e.preventDefault();
-})
 
 
 
@@ -125,16 +162,6 @@ formWt.addEventListener("change", function(e){
 
 
 
-
-
-// function addListener(multiSelector) {
-// 	for (let i of multiSelector) {
-// 		console.dir(i);
-// 		i.addEventListener("change", function addValues (i){
-// 			console.dir(parseInt(i.value));
-// 		})
-// 		}
-//} 
 
 
 
