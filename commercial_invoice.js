@@ -17,13 +17,23 @@ const invisForm = document.querySelectorAll(".invis-form")
 
 let rowCount = 1
 
+
+// formWt[0].addEventListener("change", function(e) {
+// 	e.preventDefault();
+// 		console.dir(formWt[0].value);
+// })
+
+
+
+
+
+
 date.addEventListener("change", function (e) {
 	e.preventDefault();
 	// update dates
 	shipDate.innerText = date.value
 	sigDate.innerText = date.value
 });
-
 
 sigFile.addEventListener("change", function (e){
 	e.preventDefault();
@@ -77,22 +87,15 @@ btnPlus.addEventListener("click", function (e) {
 	gridWrapper.appendChild(newVal)
 
 	formWt = document.querySelectorAll(".form-weight")
-	formWt.addEventListener("change", {
+	formWt[rowCount-1].addEventListener("change", {
 
 	})
 	for (const i of formWt) {
-		i.addEventListener("change", function (e) {
-			e.preventDefault();
+		i.addEventListener("change", function () {
 			console.dir(i.value);
 		})
 	}
 
-	// formWt[0].addEventListener("blur", addWeights())
-
-	// function addWeights() {
-	// 	console.log(rowCount);
-	// 	console.log(parseInt(formWt[rowCount-1].value));
-	// }
 })
 
 btnMinus.addEventListener("click", function (e){
@@ -113,19 +116,12 @@ btnMinus.addEventListener("click", function (e){
 
 
 
-
-function listenAdder(element, listener, functionAction) {
+function listenAdder(element, listener, fnAction, fnArg) {
 	for (i of element) {
-		i.addEventListener(listener, functionAction)
+		i.addEventListener(listener, fnAction(fnArg))
 	}
+	return 
 }
-
-
-// TODO: Add event listeners to each item in this array.
-// TODO: Add the weights together.
-
-
-
 
 
 
