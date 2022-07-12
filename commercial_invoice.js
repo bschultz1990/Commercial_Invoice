@@ -87,18 +87,10 @@ btnPlus.addEventListener("click", function (e) {
 	gridWrapper.appendChild(newVal)
 
 	formWt = document.querySelectorAll(".form-weight")
-	formWt[rowCount-1].addEventListener("change", {
-
-	})
-	for (const i of formWt) {
-		i.addEventListener("change", function () {
-			console.dir(i.value);
-		})
-	}
-
+	addColumn(formWt)
 })
 
-btnMinus.addEventListener("click", function (e){
+btnMinus.addEventListener("click", function (e){//{{{
 	e.preventDefault();
 
 	const matchTest = gridWrapper.lastElementChild.id
@@ -111,9 +103,18 @@ btnMinus.addEventListener("click", function (e){
 	} else {
 		console.log(`Found first row. Not deleting.`);
 	}
-});
+});//}}}
 
 
+function addColumn(col){
+	// for (let i of col) {
+	// 	i.addEventListener("change", function () {
+	// 		console.dir(i)
+	// 		console.dir(col)
+	// 	})
+	// }
+		
+}
 
 
 function listenAdder(element, listener, fnAction, fnArg) {
