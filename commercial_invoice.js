@@ -6,27 +6,16 @@ const shipDate = document.getElementById("ship-date")
 const sigDate = document.getElementById("sig-date")
 const sigFile = document.getElementById("sig-file")
 const gridWrapper = document.getElementById("grid-wrapper")
-const formQty = document.querySelectorAll(".form-qty")
+let formQty = document.querySelectorAll(".form-qty")
 const formDesc = document.querySelectorAll(".form-desc")
 let formWt = document.querySelectorAll(".form-weight")
 const totalWt = document.getElementById("totalweight")
-const formVal = document.querySelectorAll(".form-value")
+let formVal = document.querySelectorAll(".form-value")
 const btnPlus = document.getElementById("buttonPlus")
 const btnMinus = document.getElementById("buttonMinus")
 const invisForm = document.querySelectorAll(".invis-form")
 
 let rowCount = 1
-
-
-// formWt[0].addEventListener("change", function(e) {
-// 	e.preventDefault();
-// 		console.dir(formWt[0].value);
-// })
-
-
-
-
-
 
 date.addEventListener("change", function (e) {
 	e.preventDefault();
@@ -54,6 +43,7 @@ btnPlus.addEventListener("click", function (e) {
 	newQty.id = `form-qty-${rowCount}`
 	newQty.classList.add("invis-form")
 	newQty.classList.add("form-qty")
+	newQty.classList.add("col-qty")
 	newQty.name = `form-qty-${rowCount}`
 	newQty.placeholder = "Qty."
 	// console.dir(gridWrapper)
@@ -73,6 +63,7 @@ btnPlus.addEventListener("click", function (e) {
 	newWt.id = `form-weight-${rowCount}`
 	newWt.classList.add("invis-form")
 	newWt.classList.add("form-weight")
+	newWt.classList.add("col-wt")
 	newWt.name = `form-weight-${rowCount}`
 	newWt.placeholder = "Wt."
 	gridWrapper.appendChild(newWt);
@@ -82,13 +73,12 @@ btnPlus.addEventListener("click", function (e) {
 	newVal.id = `form-value-${rowCount}`
 	newVal.classList.add("invis-form")
 	newVal.classList.add("form-value")
+	newVal.classList.add("col-val")
 	newVal.name = `form-value-${rowCount}`
 	newVal.placeholder = "Value $"
 	gridWrapper.appendChild(newVal)
-
-	formWt = document.querySelectorAll(".form-weight")
-	addColumn(formWt)
 })
+
 
 btnMinus.addEventListener("click", function (e){//{{{
 	e.preventDefault();
@@ -106,20 +96,23 @@ btnMinus.addEventListener("click", function (e){//{{{
 });//}}}
 
 
-function addColumn(col){
-	// for (let i of col) {
-	// 	i.addEventListener("change", function () {
-	// 		console.dir(i)
-	// 		console.dir(col)
-	// 	})
-	// }
-		
+function addColumn(selector){
+	let wtCol = []
+	colSelect = document.querySelectorAll(selector)
+
+	for (let i of colSelect) {
+		wtCol.push(parseInt(i.value));
+	}
+	let subTotal = 0;
+	let colTotal = wtCol.reduce((x, y) => x+y, subTotal);
+	console.dir(`Column total is:`);
+	return colTotal;
 }
 
 
-function listenAdder(element, listener, fnAction, fnArg) {
+function listenAdder(element, listener, fn, fnArg) {
 	for (i of element) {
-		i.addEventListener(listener, fnAction(fnArg))
+		i.addEventListener(listener, fn(fnArg))
 	}
 	return 
 }
