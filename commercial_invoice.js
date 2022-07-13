@@ -17,6 +17,7 @@ let invisForm = document.querySelectorAll(".invis-form");
 
 let rowCount = 1;
 
+
 formQty.addEventListener("change", totalWeight); // add event listener to first qty
 formWeight.addEventListener("change", totalWeight); // add event listener to first weight
 // TODO: newQty.addEventListener("change", totalValue);
@@ -60,7 +61,7 @@ btnPlus.addEventListener("click", function (e) {
     newDesc.classList.add("form-desc");
     newDesc.name = `form-desc-${rowCount}`;
     newDesc.placeholder = "Description";
-    gridWrapper.appendChild(newDesc); // 1=desc col index
+    gridWrapper.appendChild(newDesc);
 
     const newWt = document.createElement("input");
     newWt.type = "text";
@@ -107,7 +108,6 @@ function colProduct(idPrefix1, idPrefix2) {
     for (let i = 1; i <= rowCount; i++) {
         rowTotals.push(multCells(i, idPrefix1, idPrefix2));
     }
-
     let subTotal = 0;
     return rowTotals.reduce((x, y) => x + y, subTotal);
 }
