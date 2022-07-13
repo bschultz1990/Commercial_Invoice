@@ -2,21 +2,110 @@
 // https://snippet-generator.app/
 
 let date = document.getElementById("form-date");
-let shipDate = document.getElementById("ship-date");
+let shipDate = document.querySelectorAll(".ship-date");
 let sigDate = document.getElementById("sig-date");
 let sigFile = document.getElementById("sig-file");
 let gridWrapper = document.getElementById("grid-wrapper");
+let shipWrapper = document.getElementById("shipWrapper");
 let formQty = document.getElementById("form-qty-1");
-let formDesc = document.querySelectorAll(".form-desc");
 let formWeight = document.getElementById("form-weight-1");
 let totalWt = document.getElementById("totalweight");
 let formValue = document.getElementById("form-value-1");
 let btnPlus = document.getElementById("buttonPlus");
+let btnPlusShipment = document.getElementById("btnPlusShipment");
+let btnMinusShipment = document.getElementById("btnMinusShipment");
 let btnMinus = document.getElementById("buttonMinus");
 let invisForm = document.querySelectorAll(".invis-form");
 
 let rowCount = 1;
+let shipCount = 0;
 
+addPackage(shipWrapper);
+
+btnMinusShipment.addEventListener("click", function (e){
+    e.preventDefault();
+})
+
+btnPlusShipment.addEventListener("click", function (e){
+    e.preventDefault();
+    addPackage(shipWrapper);
+})
+
+function addPackage (target){
+	const newShipDate = document.createElement("div");
+  shipCount++;
+  newShipDate.classList.add("ship-date")
+  target.appendChild(newShipDate);
+  
+  const newShipMethod = document.createElement("input");
+  newShipMethod.type = "text";
+  newShipMethod.classList.add("invis-form");
+  newShipMethod.classList.add("centertext");
+  newShipMethod.name = "form-shipmethod";
+  newShipMethod.id = `form-shipmethod-${shipCount}`;
+  newShipMethod.name = "form-shipmethod";
+  newShipMethod.placeholder = "Shipment Method";
+  target.appendChild(newShipMethod);
+  
+  const newShipTracker = document.createElement("input");
+  newShipTracker.type = "text";
+  newShipTracker.classList.add("invis-form");
+  newShipTracker.classList.add("centertext");
+  newShipTracker.name = `form-tracking-${shipCount}`;
+  newShipTracker.id = `form-tracking${shipCount}`;
+  newShipTracker.placeholder = "Tracking #";
+  target.appendChild(newShipTracker);
+  
+}
+
+function addRow(target) {
+    const newQty = document.createElement("input");
+    newQty.type = "text";
+    newQty.id = `form-qty-${rowCount}`;
+    newQty.classList.add("invis-form");
+    newQty.classList.add("form-qty");
+    newQty.classList.add("col-qty");
+    newQty.name = `form-qty-${rowCount}`;
+    newQty.placeholder = "Qty.";
+    newQty.addEventListener("change", totalWeight);
+    // TODO: newQty.addEventListener("change", totalValue);
+    target.appendChild(newQty);
+
+    const newDesc = document.createElement("input");
+    newDesc.type = "text";
+    newDesc.id = `form-desc-${rowCount}`;
+    newDesc.classList.add("invis-form");
+    newDesc.classList.add("form-desc");
+    newDesc.name = `form-desc-${rowCount}`;
+    newDesc.placeholder = "Description";
+    target.appendChild(newDesc);
+
+    const newWt = document.createElement("input");
+    newWt.type = "text";
+    newWt.id = `form-weight-${rowCount}`;
+    newWt.classList.add("invis-form");
+    newWt.classList.add("form-weight");
+    newWt.classList.add("col-wt");
+    newWt.name = `form-weight-${rowCount}`;
+    newWt.placeholder = "Wt.";
+    newWt.addEventListener("change", totalWeight);
+    target.appendChild(newWt);
+
+    const newVal = document.createElement("input");
+    newVal.type = "text";
+    newVal.id = `form-value-${rowCount}`;
+    newVal.classList.add("invis-form");
+    newVal.classList.add("form-value");
+    newVal.classList.add("col-val");
+    newVal.name = `form-value-${rowCount}`;
+    newVal.placeholder = "Value $";
+    // TODO: newVal.addEventListener("change", totalValue);
+    target.appendChild(newVal);
+}
+
+function addShipment() {
+    
+}
 
 formQty.addEventListener("change", totalWeight); // add event listener to first qty
 formWeight.addEventListener("change", totalWeight); // add event listener to first weight
@@ -39,51 +128,8 @@ sigFile.addEventListener("change", function (e) {
 
 btnPlus.addEventListener("click", function (e) {
     e.preventDefault();
-
     rowCount++;
-
-    const newQty = document.createElement("input");
-    newQty.type = "text";
-    newQty.id = `form-qty-${rowCount}`;
-    newQty.classList.add("invis-form");
-    newQty.classList.add("form-qty");
-    newQty.classList.add("col-qty");
-    newQty.name = `form-qty-${rowCount}`;
-    newQty.placeholder = "Qty.";
-    newQty.addEventListener("change", totalWeight);
-    // TODO: newQty.addEventListener("change", totalValue);
-    gridWrapper.appendChild(newQty);
-
-    const newDesc = document.createElement("input");
-    newDesc.type = "text";
-    newDesc.id = `form-desc-${rowCount}`;
-    newDesc.classList.add("invis-form");
-    newDesc.classList.add("form-desc");
-    newDesc.name = `form-desc-${rowCount}`;
-    newDesc.placeholder = "Description";
-    gridWrapper.appendChild(newDesc);
-
-    const newWt = document.createElement("input");
-    newWt.type = "text";
-    newWt.id = `form-weight-${rowCount}`;
-    newWt.classList.add("invis-form");
-    newWt.classList.add("form-weight");
-    newWt.classList.add("col-wt");
-    newWt.name = `form-weight-${rowCount}`;
-    newWt.placeholder = "Wt.";
-    newWt.addEventListener("change", totalWeight);
-    gridWrapper.appendChild(newWt);
-
-    const newVal = document.createElement("input");
-    newVal.type = "text";
-    newVal.id = `form-value-${rowCount}`;
-    newVal.classList.add("invis-form");
-    newVal.classList.add("form-value");
-    newVal.classList.add("col-val");
-    newVal.name = `form-value-${rowCount}`;
-    newVal.placeholder = "Value $";
-    // TODO: newVal.addEventListener("change", totalValue);
-    gridWrapper.appendChild(newVal);
+    addRow(gridWrapper);
 });
 
 btnMinus.addEventListener("click", function (e) {

@@ -111,22 +111,22 @@
 
 
 			<section id="sec-commodities">
-				<div id="col-buttons">
-					<button id="buttonMinus" class="invis-form">-</button>
-					<button id="buttonPlus" class="invis-form">+</button>
+				<div class="col-buttons">
+					<button id="buttonMinus" class="invis-form buttonMinus">-</button>
+					<button id="buttonPlus" class="invis-form buttonPlus">+</button>
 				</div> <!-- col-buttons -->
 
 				<div id="grid-wrapper">
-						<div class="boxheader bold centertext col1">
+						<div id="col1" class="boxheader bold centertext">
 							<h3>Qty.</h3>
 						</div>
-						<div class="boxheader bold centertext col2">
+						<div id="col2" class="boxheader bold centertext">
 							<h3>Commodity Description</h3>
 						</div>
-						<div class="boxheader bold centertext" col3>
+						<div id="col3" class="boxheader bold centertext">
 							<h3>Wt. (lbs.)</h3>
 						</div>
-						<div class="boxheader bold centertext" col4>
+						<div id="col4" class="boxheader bold centertext">
 							<h3>Value</h3>
 						</div>
 
@@ -147,6 +147,24 @@
 					<div><h3>Total:</h3></div>
 					<div id="totalValue"></div>
 				</div>
+
+				<section>
+					<div class="col-buttons">
+						<button id="btnMinusShipment" class="invis-form">-</button>
+						<button id="btnPlusShipment" class="invis-form">+</button>
+					</div> <!-- col-buttons -->
+
+					<div id="shipWrapper">
+						<div id="shipColHeader" class="boxheader bold centertext"><h3>Shipment Information</h3></div>
+						<div id="shipCol1" class="bold centertext"><h4>Shipped On:</h4></div>
+						<div id="shipCol2" class="bold centertext">Method:</div>
+						<div id="shipCol3" class="bold centertext">Tracking Number:</div> 
+					</div>
+				</section>
+
+
+
+				
 
 				<section>
 					<div class="boxheader center">

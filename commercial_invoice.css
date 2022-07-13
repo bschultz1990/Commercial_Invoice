@@ -139,19 +139,19 @@ input, button, textarea {
   height: 2rem;
 }
 
-.col1 {
+#col1 {
   grid-area: colone;
 }
 
-.col2 {
+#col2 {
   grid-area: coltwo;
 }
 
-.col3 {
+#col3 {
   grid-area: colthree;
 }
 
-.col4 {
+#col4 {
   grid-area: colfour;
 }
 
@@ -162,6 +162,32 @@ input, button, textarea {
   grid-template-rows: 1fr;
   grid-template-areas:
   "colone coltwo colthree colfour"
+}
+
+#shipColHeader {
+  grid-area: scHead;
+}
+
+#shipCol1 {
+  grid-area: shipcolone;
+}
+
+#shipCol2 {
+  grid-area: shipcoltwo;
+}
+
+#shipCol3 {
+  grid-area: shipcolthree;
+}
+
+#shipWrapper {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+  "scHead scHead scHead"
+  "shipcolone shipcoltwo shipcolthree"
 }
 
 #form-cst-name {
@@ -221,19 +247,19 @@ input, button, textarea {
   padding-top: var(--headPadding);
 }
 
-#col-buttons {
+.col-buttons {
   display: flex;
   flex-wrap: nowrap;
 }
 
-#col-buttons button {
+.col-buttons button {
   width: 1.5rem;
   height: 1.5rem;
   border-radius: .325rem;
 }
 
 @media print {
-  #sig-file, #col-buttons button {
+  #sig-file, .col-buttons button {
     display: none;
   }
   input, button, textarea {
