@@ -121,7 +121,7 @@ function addRow(target) {
     newWt.classList.add("invis-form");
     newWt.classList.add("form-weight");
     newWt.classList.add("col-wt");
-    newDesc.classList.add("centertext");
+    newWt.classList.add("centertext");
     newWt.name = `form-weight-${rowCount}`;
     newWt.placeholder = "Wt.";
     newWt.addEventListener("change", totalWeight);

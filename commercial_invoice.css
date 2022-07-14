@@ -47,7 +47,6 @@ textarea {
 
 .boxheader {
     border: 1px solid black;
-    background-color: lightgray;
     padding: 0.125rem;
 }
 
@@ -263,10 +262,6 @@ textarea {
     #sig-file,
     .col-buttons button {
         display: none;
-    }
-    #form-date {
-        user-select: none;
-        pointer-events: none;
     }
     input,
     button,
