@@ -1,11 +1,11 @@
 :root {
-  --headPadding: .25rem;
-  font-size: smaller;
+    --headPadding: 0.25rem;
+    font-size: smaller;
 }
 
 body {
-  font-family: calibri;
-  background-color: lightcoral; 
+    font-family: calibri;
+    background-color: lightcoral;
 }
 
 h5,
@@ -14,79 +14,81 @@ h3,
 h2,
 h1,
 p {
-  margin-top: 0rem;
-  margin-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
 }
 
 section {
-  margin-top: 2rem;
+    margin-top: 2rem;
 }
 
-input, button, textarea {
-  appearance: none;
-  border: 1px solid grey;
-  outline: none;
-  background: yellow;
+input,
+button,
+textarea {
+    appearance: none;
+    border: 1px solid grey;
+    outline: none;
+    background: yellow;
 }
 
 .invis-form {
-  height: 2rem;
-  font-family: calibri;
+    height: 2rem;
+    font-family: calibri;
 }
 
 #form-cst-address {
-  height: fit-content;
-  font-size: small;
+    height: fit-content;
+    font-size: small;
 }
 
 .container {
-  background-color: lightblue;
+    background-color: lightblue;
 }
 
 .boxheader {
-  border: 1px solid black;
-  background-color: lightgray;
-  padding: 0.125rem;
+    border: 1px solid black;
+    background-color: lightgray;
+    padding: 0.125rem;
 }
 
 .center {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 #form-pkg-count {
-  display: none;
+    display: none;
 }
 
 .bold {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 #orderheader {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .borderless {
-  border: none;
+    border: none;
 }
 
 #checkboxes {
-  display: flex;
-  justify-content: space-between;
-  width: 75%;
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
 }
 
 .box {
-  display: inline-flex;
-  align-items: center;
+    display: inline-flex;
+    align-items: center;
 }
 
 .checkbox {
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 2px solid black;
-  margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid black;
+    margin-right: 0.5rem;
 }
 
 .shiptotable,
@@ -95,177 +97,183 @@ input, button, textarea {
 }
 
 .smtablehalf {
-  column-width: 200px;
+    column-width: 200px;
 }
 
 .spacebetween {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 #sig-section {
-  margin-top: 0rem;
+    margin-top: 0rem;
 }
 
 #signature,
 #sig-date {
-  min-width: 10rem;
-  vertical-align: middle;
+    min-width: 10rem;
+    vertical-align: middle;
 }
 
 #sig-date {
-  align-self: flex-end;
-  text-align: right;
+    align-self: flex-end;
+    text-align: right;
 }
 
 #signature {
-  min-width: 30rem;
+    min-width: 30rem;
 }
 
 .flex-section {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
-.halfwidth{
-  min-width: 49vw;
+.halfwidth {
+    min-width: 49vw;
 }
 
 .centertext {
-  text-align: center;
+    text-align: center;
 }
 
 .name {
-  height: 2rem;
+    height: 2rem;
 }
 
 #col1 {
-  grid-area: colone;
+    grid-area: colone;
 }
 
 #col2 {
-  grid-area: coltwo;
+    grid-area: coltwo;
 }
 
 #col3 {
-  grid-area: colthree;
+    grid-area: colthree;
 }
 
 #col4 {
-  grid-area: colfour;
+    grid-area: colfour;
 }
 
 #grid-wrapper {
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-columns: .5fr 8fr 1.5fr .5fr;
-  grid-template-rows: 1fr;
-  grid-template-areas:
-  "colone coltwo colthree colfour"
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 0.5fr 8fr 1.5fr 0.5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "colone coltwo colthree colfour";
 }
 
 #shipColHeader {
-  grid-area: scHead;
+    grid-area: scHead;
 }
 
 #shipCol1 {
-  grid-area: shipcolone;
+    grid-area: shipcolone;
 }
 
 #shipCol2 {
-  grid-area: shipcoltwo;
+    grid-area: shipcoltwo;
 }
 
 #shipCol3 {
-  grid-area: shipcolthree;
+    grid-area: shipcolthree;
 }
 
 #shipWrapper {
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas:
-  "scHead scHead scHead"
-  "shipcolone shipcoltwo shipcolthree"
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "scHead scHead scHead"
+        "shipcolone shipcoltwo shipcolthree";
 }
 
 #form-cst-name {
-  width: 21rem;
-  font-weight: bold;
+    width: 21rem;
+    font-weight: bold;
 }
 
 .form-qty {
-  text-align: center;
-  max-width: 2.75rem;
+    text-align: center;
+    max-width: 2.75rem;
 }
 
 .form-desc {
-  max-width: 40rem;
+    max-width: 40rem;
 }
 
 .form-weight {
-  max-width: 7.125rem;
+    max-width: 7.125rem;
 }
 
 .form-value {
-  text-align: right;
-  max-width: 4rem;
+    text-align: right;
+    max-width: 4rem;
 }
 
 .flex-total {
-  padding-top: 1rem;
-  display: flex;
-  justify-content: space-between;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .ship-info {
-  border: 1px solid black;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
-  flex-grow: 1;
+    border: 1px solid black;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    flex-grow: 1;
 }
 
-#ship-date {
-  padding-top: .125rem;
+.ship-date {
+    padding-top: 0.5rem;
 }
 
 #sig-img {
-  max-width: 75%
+    max-width: 75%;
 }
 
 #sig-col-2 {
-  display: flex;
+    display: flex;
 }
 
 #form-shipmethod {
-  width: 25rem;
-  text-align: center;
+    width: 25rem;
+    text-align: center;
 }
 
 .headerpadding {
-  padding-top: var(--headPadding);
+    padding-top: var(--headPadding);
 }
 
 .col-buttons {
-  display: flex;
-  flex-wrap: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .col-buttons button {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: .325rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.325rem;
 }
 
 @media print {
-  #sig-file, .col-buttons button {
-    display: none;
-  }
-  input, button, textarea {
-    border: none;
-    outline: none;
-    background: none;
-    appearance: none;
-  }
+    #sig-file,
+    .col-buttons button {
+        display: none;
+    }
+    #form-date {
+        user-select: none;
+        pointer-events: none;
+    }
+    input,
+    button,
+    textarea {
+        border: none;
+        outline: none;
+        background: none;
+        appearance: none;
+    }
 }

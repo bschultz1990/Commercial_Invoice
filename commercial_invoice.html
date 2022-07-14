@@ -53,7 +53,7 @@
 						<input class="invis-form" type="text" name="form-cst-name" id="form-cst-name" placeholder="Cst. Full Name">
 					</div>	
 					<div>
-						<textarea class="invis-form" name="form-cst-address" id="form-cst-address" cols="40" rows="7" placeholder="Cst. Address"></textarea>
+						<textarea class="invis-form" name="form-cst-address" id="form-cst-address" cols="40" rows="7" placeholder="Cst. Address" readonly></textarea>
 					</div>
 				</div>
 			</section> <!-- flex-section -->
@@ -106,10 +106,6 @@
 				</div>
 			</section><!-- flex-section -->
 
-
-
-
-
 			<section id="sec-commodities">
 				<div class="col-buttons">
 					<button id="buttonMinus" class="invis-form buttonMinus">-</button>
@@ -132,16 +128,10 @@
 
 							<input type="text" id="form-qty-1" class="invis-form form-qty col-qty" name="form-qty-1" placeholder="Qty.">
 							<input type="text" id="form-desc-1" class="invis-form form-desc" name="form-desc-1" placeholder="Description">
-							<input type="text" id="form-weight-1" class="invis-form form-weight col-wt" name="form-weight-1" placeholder="Wt.">
+							<input type="text" id="form-weight-1" class="invis-form form-weight col-wt centertext" name="form-weight-1" placeholder="Wt.">
 							<input type="text" id="form-value-1" class="invis-form form-value col-val" name="form-value-1" placeholder="Value $">
 				</div>
 			</section>
-
-
-
-
-
-
 
 				<div class="flex-total">
 					<div><h3>Total:</h3></div>
@@ -156,7 +146,7 @@
 
 					<div id="shipWrapper">
 						<div id="shipColHeader" class="boxheader bold centertext"><h3>Shipment Information</h3></div>
-						<div id="shipCol1" class="bold centertext"><h4>Shipped On:</h4></div>
+						<div id="shipCol1" class="bold centertext"><h4>Shipped On: (yyyy-mm-dd)</h4></div>
 						<div id="shipCol2" class="bold centertext">Method:</div>
 						<div id="shipCol3" class="bold centertext">Tracking Number:</div> 
 					</div>
@@ -165,34 +155,6 @@
 
 
 				
-
-				<section>
-					<div class="boxheader center">
-						<h3 class="bold">Shipment Information</h3>
-					</div> <!--invoice header-->
-
-					<div class="flex-section">
-						<div class="ship-info centertext">
-							<h4>Shipped On:</h4>
-							<div id="ship-date"></div>
-						</div>
-
-						<div class="ship-info centertext">
-							<h4>Method:</h4>
-							<div id="shipmethod">
-								<input type="text" class="invis-form" name="form-shipmethod" id="form-shipmethod" placeholder="Shipment Method">
-							</div>
-						</div>
-
-						<div class="ship-info centertext">
-							<h4>Tracking Number:</h4>
-							<div id="shiptracking">
-								<input type="text" class="invis-form" name="form-tracking1" id="form-tracking1" placeholder="Tracking #">
-							</div>
-						</div>
-
-					</div><!-- flex-section -->
-				</section>
 
 				<section>
 					<input type="file" id="sig-file" class="invis-form" accept="image/*" name="signature file" placeholder="Upload Signature Image">

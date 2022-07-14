@@ -16,46 +16,81 @@ let btnPlusShipment = document.getElementById("btnPlusShipment");
 let btnMinusShipment = document.getElementById("btnMinusShipment");
 let btnMinus = document.getElementById("buttonMinus");
 let invisForm = document.querySelectorAll(".invis-form");
+let pkgCount = document.getElementById("pkgcount");
+let grandTotal = document.getElementById("totalValue");
 
 let rowCount = 1;
 let shipCount = 0;
 
 addPackage(shipWrapper);
 
-btnMinusShipment.addEventListener("click", function (e){
-    e.preventDefault();
-})
+// invisForm.addEventListener("submit", function (e) {
+//     e.preventDefault();
+//     // Don't do ANYTHING when enter is pressed.
+// });
 
-btnPlusShipment.addEventListener("click", function (e){
+btnPlusShipment.addEventListener("click", function (e) {
     e.preventDefault();
     addPackage(shipWrapper);
-})
+});
 
-function addPackage (target){
-	const newShipDate = document.createElement("div");
-  shipCount++;
-  newShipDate.classList.add("ship-date")
-  target.appendChild(newShipDate);
-  
-  const newShipMethod = document.createElement("input");
-  newShipMethod.type = "text";
-  newShipMethod.classList.add("invis-form");
-  newShipMethod.classList.add("centertext");
-  newShipMethod.name = "form-shipmethod";
-  newShipMethod.id = `form-shipmethod-${shipCount}`;
-  newShipMethod.name = "form-shipmethod";
-  newShipMethod.placeholder = "Shipment Method";
-  target.appendChild(newShipMethod);
-  
-  const newShipTracker = document.createElement("input");
-  newShipTracker.type = "text";
-  newShipTracker.classList.add("invis-form");
-  newShipTracker.classList.add("centertext");
-  newShipTracker.name = `form-tracking-${shipCount}`;
-  newShipTracker.id = `form-tracking${shipCount}`;
-  newShipTracker.placeholder = "Tracking #";
-  target.appendChild(newShipTracker);
-  
+btnMinusShipment.addEventListener("click", function (e) {
+    e.preventDefault();
+    subtractPackage(shipWrapper);
+});
+
+function updateDates() {
+    sigDate.innerText = date.value;
+    shipDate = document.querySelectorAll(".ship-date");
+    console.dir(shipDate);
+    for (let i of shipDate) {
+        console.dir(`i: ${i}`);
+        i.innerText = date.value;
+    }
+}
+
+function subtractPackage(target) {
+    if (shipCount > 1) {
+        for (let i = 1; i <= 3; i++) {
+            target.lastElementChild.remove();
+        }
+        shipCount--;
+        pkgCount.innerText = shipCount;
+    } else {
+        console.log(`Found first row. Not deleting. ShipCount = ${shipCount}`);
+    }
+}
+
+function addPackage(target) {
+    const newShipDate = document.createElement("div");
+    newShipDate.classList.add("ship-date");
+    newShipDate.classList.add("centertext");
+    shipDate = document.querySelectorAll(".ship-date");
+    target.appendChild(newShipDate);
+
+    const newShipMethod = document.createElement("input");
+    newShipMethod.type = "text";
+    newShipMethod.classList.add("invis-form");
+    newShipMethod.classList.add("centertext");
+    newShipMethod.name = "form-shipmethod";
+    newShipMethod.id = `form-shipmethod-${shipCount}`;
+    newShipMethod.name = "form-shipmethod";
+    newShipMethod.placeholder = "Shipment Method";
+    target.appendChild(newShipMethod);
+
+    const newShipTracker = document.createElement("input");
+    newShipTracker.type = "text";
+    newShipTracker.classList.add("invis-form");
+    newShipTracker.classList.add("centertext");
+    newShipTracker.name = `form-tracking-${shipCount}`;
+    newShipTracker.id = `form-tracking${shipCount}`;
+    newShipTracker.placeholder = "Tracking #";
+    target.appendChild(newShipTracker);
+
+    shipCount++;
+    pkgCount.innerText = shipCount;
+
+    updateDates();
 }
 
 function addRow(target) {
@@ -68,7 +103,7 @@ function addRow(target) {
     newQty.name = `form-qty-${rowCount}`;
     newQty.placeholder = "Qty.";
     newQty.addEventListener("change", totalWeight);
-    // TODO: newQty.addEventListener("change", totalValue);
+    newQty.addEventListener("change", totalValue);
     target.appendChild(newQty);
 
     const newDesc = document.createElement("input");
@@ -86,6 +121,7 @@ function addRow(target) {
     newWt.classList.add("invis-form");
     newWt.classList.add("form-weight");
     newWt.classList.add("col-wt");
+    newDesc.classList.add("centertext");
     newWt.name = `form-weight-${rowCount}`;
     newWt.placeholder = "Wt.";
     newWt.addEventListener("change", totalWeight);
@@ -99,23 +135,18 @@ function addRow(target) {
     newVal.classList.add("col-val");
     newVal.name = `form-value-${rowCount}`;
     newVal.placeholder = "Value $";
-    // TODO: newVal.addEventListener("change", totalValue);
+    newVal.addEventListener("change", totalValue);
     target.appendChild(newVal);
 }
 
-function addShipment() {
-    
-}
-
 formQty.addEventListener("change", totalWeight); // add event listener to first qty
+formQty.addEventListener("change", totalValue);
 formWeight.addEventListener("change", totalWeight); // add event listener to first weight
-// TODO: newQty.addEventListener("change", totalValue);
+formValue.addEventListener("change", totalValue);
 
 date.addEventListener("change", function (e) {
     e.preventDefault();
-    // update dates
-    shipDate.innerText = date.value;
-    sigDate.innerText = date.value;
+    updateDates();
 });
 
 sigFile.addEventListener("change", function (e) {
@@ -155,11 +186,15 @@ function colProduct(idPrefix1, idPrefix2) {
         rowTotals.push(multCells(i, idPrefix1, idPrefix2));
     }
     let subTotal = 0;
-    return rowTotals.reduce((x, y) => x + y, subTotal);
+    return parseFloat(rowTotals.reduce((x, y) => x + y, subTotal)).toFixed(2);
 }
 
 function totalWeight() {
     totalWt.innerText = colProduct("form-qty", "form-weight");
+}
+
+function totalValue() {
+    grandTotal.innerText = colProduct("form-qty", "form-value");
 }
 
 function multCells(rowNum, idPrefix1, idPrefix2) {
@@ -173,7 +208,7 @@ function multCells(rowNum, idPrefix1, idPrefix2) {
     prodArray.push(parseFloat(selector2.value));
 
     let subTotal = 1;
-    return prodArray.reduce((x, y) => x * y, subTotal);
+    return parseFloat(prodArray.reduce((x, y) => x * y, subTotal)).toFixed(2);
 }
 
 // function listenAdder(element, listener, fn, fnArg) {
