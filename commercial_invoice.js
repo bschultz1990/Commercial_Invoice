@@ -18,13 +18,14 @@ let btnMinus = document.getElementById("buttonMinus");
 let invisForm = document.querySelectorAll(".invis-form");
 let pkgCount = document.getElementById("pkgcount");
 let grandTotal = document.getElementById("totalValue");
+let submitButton = document.getElementById("form-submit")
 
 let rowCount = 1;
 let shipCount = 0;
 
 addPackage(shipWrapper);
 
-// invisForm.addEventListener("submit", function (e) {
+// submitButton.addEventListener("submit", function (e) {
 //     e.preventDefault();
 //     // Don't do ANYTHING when enter is pressed.
 // });
