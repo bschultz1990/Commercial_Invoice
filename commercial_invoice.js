@@ -25,10 +25,20 @@ let shipCount = 0;
 
 addPackage(shipWrapper);
 
-// submitButton.addEventListener("submit", function (e) {
-//     e.preventDefault();
-//     // Don't do ANYTHING when enter is pressed.
-// });
+function redOutline() {
+    invisForm = document.querySelectorAll(".invis-form")
+for (let i of invisForm) {
+    i.addEventListener("change", function () {
+        if (i.value !== "") {
+            i.classList.add("nooutline")
+        } else {
+            i.classList.remove("nooutline")
+        }
+    })
+}
+}
+
+redOutline();
 
 btnPlusShipment.addEventListener("click", function (e) {
     e.preventDefault();
@@ -92,6 +102,7 @@ function addPackage(target) {
     pkgCount.innerText = shipCount;
 
     updateDates();
+    redOutline();
 }
 
 function addRow(target) {
@@ -138,6 +149,8 @@ function addRow(target) {
     newVal.placeholder = "Value $";
     newVal.addEventListener("change", totalValue);
     target.appendChild(newVal);
+
+    redOutline();
 }
 
 formQty.addEventListener("change", totalWeight); // add event listener to first qty
