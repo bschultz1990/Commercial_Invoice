@@ -9,8 +9,8 @@ let gridWrapper = document.getElementById("grid-wrapper");
 let shipWrapper = document.getElementById("shipWrapper");
 let formQty = document.getElementById("form-qty-1");
 let formWeight = document.getElementById("form-weight-1");
-let totalWt = document.getElementById("totalweight");
 let formValue = document.getElementById("form-value-1");
+let totalWt = document.getElementById("totalweight");
 let btnPlus = document.getElementById("buttonPlus");
 let btnPlusShipment = document.getElementById("btnPlusShipment");
 let btnMinusShipment = document.getElementById("btnMinusShipment");
@@ -53,9 +53,7 @@ btnMinusShipment.addEventListener("click", function (e) {
 function updateDates() {
     sigDate.innerText = date.value;
     shipDate = document.querySelectorAll(".ship-date");
-    console.dir(shipDate);
     for (let i of shipDate) {
-        console.dir(`i: ${i}`);
         i.innerText = date.value;
     }
 }
@@ -178,7 +176,6 @@ btnPlus.addEventListener("click", function (e) {
 });
 
 btnMinus.addEventListener("click", function (e) {
-    //{{{
     e.preventDefault();
 
     const matchTest = gridWrapper.lastElementChild.id;
@@ -191,7 +188,7 @@ btnMinus.addEventListener("click", function (e) {
     } else {
         console.log(`Found first row. Not deleting.`);
     }
-}); //}}}
+});
 
 function colProduct(idPrefix1, idPrefix2) {
     let rowTotals = []; // empty array
@@ -224,10 +221,3 @@ function multCells(rowNum, idPrefix1, idPrefix2) {
     let subTotal = 1;
     return parseFloat(prodArray.reduce((x, y) => x * y, subTotal)).toFixed(2);
 }
-
-// function listenAdder(element, listener, fn, fnArg) {
-//     for (i of element) {
-//         i.addEventListener(listener, fn(fnArg));
-//     }
-//     return;
-// }
