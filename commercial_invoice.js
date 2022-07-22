@@ -18,57 +18,55 @@ let btnMinus = document.getElementById("buttonMinus");
 let invisForm = document.querySelectorAll(".invis-form");
 let pkgCount = document.getElementById("pkgcount");
 let grandTotal = document.getElementById("totalValue");
-let submitButton = document.getElementById("form-submit")
+let submitButton = document.getElementById("form-submit");
 
 let rowCount = 1;
 let shipCount = 0;
 
 addPackage(shipWrapper);
-
-function redOutline() {
-    invisForm = document.querySelectorAll(".invis-form")
-for (let i of invisForm) {
-    i.addEventListener("change", function () {
-        if (i.value !== "") {
-            i.classList.add("nooutline")
-        } else {
-            i.classList.remove("nooutline")
-        }
-    })
-}
-}
-
 redOutline();
+
+formQty.addEventListener("change", totalWeight); // add event listener to first qty
+formQty.addEventListener("change", totalValue);
+formWeight.addEventListener("change", totalWeight); // add event listener to first weight
+formValue.addEventListener("change", totalValue);
+sigFile.addEventListener("change", function (e) {
+    e.preventDefault();
+    const sigImg = document.querySelector("#sig-img");
+    URL.revokeObjectURL(e.target.files[0].name);
+    sigImg.src = URL.createObjectURL(e.target.files[0]); // Assign source to image
+    console.dir(sigImg.src);
+});
+
+btnPlus.addEventListener("click", function (e) {
+    e.preventDefault();
+    rowCount++;
+    addRow(gridWrapper);
+});
+
+btnMinus.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const matchTest = gridWrapper.lastElementChild.id;
+    if (new RegExp("form-value-1").test(matchTest) === false) {
+        console.log("No match. Deleting row...");
+        for (let i = 0; i < 4; i++) {
+            gridWrapper.lastElementChild.remove();
+        }
+        rowCount--;
+    } else {
+        console.log(`Found first row. Not deleting.`);
+    }
+});
 
 btnPlusShipment.addEventListener("click", function (e) {
     e.preventDefault();
     addPackage(shipWrapper);
 });
-
 btnMinusShipment.addEventListener("click", function (e) {
     e.preventDefault();
     subtractPackage(shipWrapper);
 });
-
-function updateDates() {
-    sigDate.innerText = date.value;
-    shipDate = document.querySelectorAll(".ship-date");
-    for (let i of shipDate) {
-        i.innerText = date.value;
-    }
-}
-
-function subtractPackage(target) {
-    if (shipCount > 1) {
-        for (let i = 1; i <= 3; i++) {
-            target.lastElementChild.remove();
-        }
-        shipCount--;
-        pkgCount.innerText = shipCount;
-    } else {
-        console.log(`Found first row. Not deleting. ShipCount = ${shipCount}`);
-    }
-}
 
 function addPackage(target) {
     const newShipDate = document.createElement("div");
@@ -101,6 +99,18 @@ function addPackage(target) {
 
     updateDates();
     redOutline();
+}
+
+function subtractPackage(target) {
+    if (shipCount > 1) {
+        for (let i = 1; i <= 3; i++) {
+            target.lastElementChild.remove();
+        }
+        shipCount--;
+        pkgCount.innerText = shipCount;
+    } else {
+        console.log(`Found first row. Not deleting. ShipCount = ${shipCount}`);
+    }
 }
 
 function addRow(target) {
@@ -151,45 +161,6 @@ function addRow(target) {
     redOutline();
 }
 
-formQty.addEventListener("change", totalWeight); // add event listener to first qty
-formQty.addEventListener("change", totalValue);
-formWeight.addEventListener("change", totalWeight); // add event listener to first weight
-formValue.addEventListener("change", totalValue);
-
-date.addEventListener("change", function (e) {
-    e.preventDefault();
-    updateDates();
-});
-
-sigFile.addEventListener("change", function (e) {
-    e.preventDefault();
-    const sigImg = document.querySelector("#sig-img");
-    URL.revokeObjectURL(e.target.files[0].name);
-    sigImg.src = URL.createObjectURL(e.target.files[0]); // Assign source to image
-    console.dir(sigImg.src);
-});
-
-btnPlus.addEventListener("click", function (e) {
-    e.preventDefault();
-    rowCount++;
-    addRow(gridWrapper);
-});
-
-btnMinus.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    const matchTest = gridWrapper.lastElementChild.id;
-    if (new RegExp("form-value-1").test(matchTest) === false) {
-        console.log("No match. Deleting row...");
-        for (let i = 0; i < 4; i++) {
-            gridWrapper.lastElementChild.remove();
-        }
-        rowCount--;
-    } else {
-        console.log(`Found first row. Not deleting.`);
-    }
-});
-
 function colProduct(idPrefix1, idPrefix2) {
     let rowTotals = []; // empty array
 
@@ -220,4 +191,25 @@ function multCells(rowNum, idPrefix1, idPrefix2) {
 
     let subTotal = 1;
     return parseFloat(prodArray.reduce((x, y) => x * y, subTotal)).toFixed(2);
+}
+
+function redOutline() {
+    invisForm = document.querySelectorAll(".invis-form");
+    for (let i of invisForm) {
+        i.addEventListener("change", function () {
+            if (i.value !== "") {
+                i.classList.add("nooutline");
+            } else {
+                i.classList.remove("nooutline");
+            }
+        });
+    }
+}
+
+function updateDates() {
+    sigDate.innerText = date.value;
+    shipDate = document.querySelectorAll(".ship-date");
+    for (let i of shipDate) {
+        i.innerText = date.value;
+    }
 }
