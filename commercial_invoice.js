@@ -161,38 +161,6 @@ function addRow(target) {
     redOutline();
 }
 
-function colProduct(idPrefix1, idPrefix2) {
-    let rowTotals = []; // empty array
-
-    for (let i = 1; i <= rowCount; i++) {
-        rowTotals.push(multCells(i, idPrefix1, idPrefix2));
-    }
-    let subTotal = 0;
-    return parseFloat(rowTotals.reduce((x, y) => x + y, subTotal)).toFixed(2);
-}
-
-function totalWeight() {
-    totalWt.innerText = colProduct("form-qty", "form-weight");
-}
-
-function totalValue() {
-    grandTotal.innerText = colProduct("form-qty", "form-value");
-}
-
-function multCells(rowNum, idPrefix1, idPrefix2) {
-    // Append rowCount to our getElementById to get a selector
-    let prodArray = [];
-
-    let selector1 = document.getElementById(idPrefix1.concat("-", rowNum));
-    prodArray.push(parseFloat(selector1.value));
-
-    let selector2 = document.getElementById(idPrefix2.concat("-", rowNum));
-    prodArray.push(parseFloat(selector2.value));
-
-    let subTotal = 1;
-    return parseFloat(prodArray.reduce((x, y) => x * y, subTotal)).toFixed(2);
-}
-
 function redOutline() {
     invisForm = document.querySelectorAll(".invis-form");
     for (let i of invisForm) {
@@ -212,4 +180,36 @@ function updateDates() {
     for (let i of shipDate) {
         i.innerText = date.value;
     }
+}
+
+function totalWeight() {
+    totalWt.innerText = colProduct("form-qty", "form-weight");
+}
+
+function totalValue() {
+    grandTotal.innerText = colProduct("form-qty", "form-value");
+}
+
+function colProduct(idPrefix1, idPrefix2) {
+    let rowTotals = []; // empty array
+
+    for (let i = 1; i <= rowCount; i++) {
+        rowTotals.push(multCells(i, idPrefix1, idPrefix2));
+    }
+    let subTotal = 0;
+    return parseFloat(rowTotals.reduce((x, y) => x + y, subTotal)).toFixed(2);
+}
+
+function multCells(rowNum, idPrefix1, idPrefix2) {
+    // Append rowCount to our getElementById to get a selector
+    let prodArray = [];
+
+    let selector1 = document.getElementById(idPrefix1.concat("-", rowNum));
+    prodArray.push(parseFloat(selector1.value));
+
+    let selector2 = document.getElementById(idPrefix2.concat("-", rowNum));
+    prodArray.push(parseFloat(selector2.value));
+
+    let subTotal = 1;
+    return parseFloat(prodArray.reduce((x, y) => x * y, subTotal)).toFixed(2);
 }
