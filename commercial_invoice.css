@@ -1,6 +1,10 @@
+:root {
+    --headPadding: 0.25rem;
+    font-size: smaller;
+}
+
 body {
     font-family: calibri;
-    background-color: rgb(190, 190, 190);
 }
 
 h5,
@@ -17,18 +21,45 @@ section {
     margin-top: 2rem;
 }
 
+input,
+button,
+textarea {
+    appearance: none;
+    outline: 3px solid lightcoral;
+}
+
+.nooutline {
+    outline: none;
+}
+
+.invis-form {
+    height: 2rem;
+    font-family: calibri;
+}
+
+#form-cst-address {
+    height: fit-content;
+    font-size: small;
+}
+
 .container {
-    background-color: pink;
+    /* background-color: lightblue; */
+    /* margin-right: 12rem; */
+    /* margin-left: 12rem; */
 }
 
 .boxheader {
     border: 1px solid black;
-    background-color: lightgray;
+    padding: 0.125rem;
 }
 
 .center {
     display: flex;
     justify-content: center;
+}
+
+#form-pkg-count {
+    display: none;
 }
 
 .bold {
@@ -38,33 +69,10 @@ section {
 #orderheader {
     display: flex;
     justify-content: space-between;
-    /* background-color: orange; */
-}
-
-.orderbox {
-    /* border: 1px solid black; */
 }
 
 .borderless {
     border: none;
-}
-
-.table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.table,
-td {
-    border: 1px solid black;
-}
-
-.td-center {
-    text-align: center;
-}
-
-.tablehalf {
-    column-width: 500px;
 }
 
 #checkboxes {
@@ -74,8 +82,8 @@ td {
 }
 
 .box {
-    background-color: lightblue;
     display: inline-flex;
+    align-items: center;
 }
 
 .checkbox {
@@ -99,53 +107,171 @@ td {
     justify-content: space-between;
 }
 
-.line {
-    background-color: greenyellow;
-}
-
-#shipmentInformation {
-    border-bottom: none;
+#sig-section {
+    margin-top: 0rem;
 }
 
 #signature,
-#date {
-    border-top: 1px solid black;
+#sig-date {
+    min-width: 10rem;
+    vertical-align: middle;
 }
 
-#signhere {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3rem;
+#sig-date {
+    align-self: flex-end;
+    text-align: right;
 }
 
 #signature {
     min-width: 30rem;
 }
 
-#date {
-    min-width: 10rem;
-}
-#spacer {
-    min-width: 5rem;
+.flex-section {
+    display: flex;
+    flex-direction: row;
 }
 
-#formInvoice {
+.halfwidth {
+    min-width: 49vw;
 }
 
-form.form-data {
-    display: table;
+.centertext {
+    text-align: center;
 }
 
-div.form-data {
-    display: table-row;
+.name {
+    height: 2rem;
 }
 
-label,
-input {
-    display: table-cell;
-    margin-bottom: 10px;
+#col1 {
+    grid-area: colone;
 }
 
-label {
-    padding-right: 10px;
+#col2 {
+    grid-area: coltwo;
+}
+
+#col3 {
+    grid-area: colthree;
+}
+
+#col4 {
+    grid-area: colfour;
+}
+
+#grid-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 0.5fr 8fr 1.5fr 0.5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "colone coltwo colthree colfour";
+}
+
+#shipColHeader {
+    grid-area: scHead;
+}
+
+#shipCol1 {
+    grid-area: shipcolone;
+}
+
+#shipCol2 {
+    grid-area: shipcoltwo;
+}
+
+#shipCol3 {
+    grid-area: shipcolthree;
+}
+
+#shipWrapper {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "scHead scHead scHead"
+        "shipcolone shipcoltwo shipcolthree";
+}
+
+#form-cst-name {
+    width: 21rem;
+    font-weight: bold;
+}
+
+.form-qty {
+    text-align: center;
+    max-width: 2.75rem;
+}
+
+.form-desc {
+    max-width: 40rem;
+}
+
+.form-weight {
+    max-width: 7.125rem;
+}
+
+.form-value {
+    text-align: right;
+    max-width: 4rem;
+}
+
+.flex-total {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ship-info {
+    border: 1px solid black;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    flex-grow: 1;
+}
+
+.ship-date {
+    padding-top: 0.5rem;
+}
+
+#sig-img {
+    max-width: 75%;
+}
+
+#sig-col-2 {
+    display: flex;
+}
+
+#form-shipmethod {
+    width: 25rem;
+    text-align: center;
+}
+
+.headerpadding {
+    padding-top: var(--headPadding);
+}
+
+.col-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.col-buttons button {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.325rem;
+}
+
+@media print {
+    #sig-file,
+    .col-buttons button {
+        display: none;
+    }
+    input,
+    button,
+    textarea {
+        border: none;
+        outline: none;
+        background: none;
+        appearance: none;
+    }
 }

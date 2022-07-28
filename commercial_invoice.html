@@ -4,182 +4,172 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="commercial_invoice.css">
-	<title>TITLE</title>
+	<link rel="favicon" href="media/card-checklist.svg">
+	<title>Commercial Invoice</title>
 </head>
 <body>
 	<div class="container">
 		<form action = "submit" id="form-submit" class="form-data">
-			<div class="form-data">
-				<label for="form-order">Order:</label>
-				<input type="text" name="form-order" id="form-order">
-			</div>
-			<div class="form-data">
-				<label for="form-date">Date:</label>
-				<input type="date" name="form-date" id="form-date">
-			</div>
-			<div class="form-data">
-				<label for="form-cst-name">Cst. Full Name:</label>
-				<input type="text" name="form-cst-name" id="form-cst-name">
-			</div>
-			<div class="form-data">
-				<label for="form-cst-address">Cst. Address:</label>
-				<!-- <input type="text" name="form-cst-address" id="form-cst-address"> -->
-				<textarea name="form-cst-address" id="form-cst-address" cols="35" rows="4"></textarea>
-			</div>
-
-				<div class="form-data">
-					<label for="form-commodities">Commodities:
-						<input type="button" value="-">
-						<input type="button" value="+">
-					</label>
-					<input type="text" name="form-commodities" id="form-commodities" value="Quantity">
-					<input type="text" name="form-description" value="Description">
-					<input type="text" name="form-weight" value="Weight (lbs)">
-					<input type="text" name="form-value" value="Value $">
-				</div>
-
-			<div class="form-data">
-				<label for="form-pkg-count">Package Count:</label>
-				<input type="number" name="form-pkg-count" id="form-pkg-count">
-			</div>
-			
-			<div class="form-data">
-				<input type="submit" value="Submit">
-			</div>
-		</form>
-		<!-- form -->
 		<div id="sheet">
 			<section>
 				<div class="boxheader center">
 					<h3 class="bold">Commercial Invoice</h3>
 				</div> <!--invoice header-->
 				<div id="orderheader">
-					<div><p class="bold">Pellethead.com</p></div>
+					<div class="headerpadding">
+						<p class="bold">Pellethead.com</p>
+					</div>
 					<div class="orderbox">
 						<table class="table borderless" id="orderTable">
 							<tr>
 								<td class="bold">Order:</td>
-								<td id="ordernum"></td>
+								<td id="ordernum"><input class="invis-form" type="text" name="form-order" id="form-order" placeholder="Order #"></td>
 							</tr>
 							<tr>
 								<td class="bold">Date:</td>
-								<td id="orderdate"></td>
+								<td id="orderdate"><input class="invis-form" type="date" name="form-date" id="form-date"></td>
 							</tr>
 						</table>
 					</div>
 				</div>
 			</section>
-			<section>
-				<table id="toFromTable" class="table">
-					<tr>
-						<th class="boxheader bold tablehalf"><h3>Ship From</h3></th>
-						<th class="boxheader bold tablehalf"><h3 class="bold">Ship To</h3></th>
-					</tr>
-					<tr>
-						<td class="bold">Pellethead.com</td>
-						<td class="bold"></td>
-					</tr>
-					<tr>
-						<td>W9715 State Road 96<br>PO BOX 167<br>Dale, Wisconsin 54931<br>920-955-3858<br>http://pellethead.com</td>
-						<td id="shiptoaddress"></td>
-					</tr>
-				</table>
-			</section>
-			<section>
-				<table id = "shippingDetails" class="table">
-					<tr>
-						<th class="boxheader bold tablehalf"><h3>Importer Other Than Recipient</h3></th>
-						<th class="boxheader bold tablehalf"><h3>Ship To</h3></th>
-					</tr>
-					<tr>
-						<td>Earth Sense Energy Systems<br>CL 380782<br>W9715 State Road 96<br>Dale, WI 54931<br>920-779-6647 / 800-236-6647</td>
-						<td>
-							<div id="checkboxes">
-								<div class="box"><div class="checkbox"></div class="bold">CIF</div>
-								<div class="box"><div class="checkbox"></div class="bold">FOB</div>
-								<div class="box"><div class="checkbox"></div class="bold">C&F</div>
-							</div>
-							<div>
-								<table id = shiptotable class="table shiptotable">
-									<tr>
-										<td class="smtablehalf">Country of Export:</td>
-										<td class="smtablehalf">United States</td>
-									</tr>
-									<tr>
-										<td>Country of Destination:</td>
-										<td id="countrydest"></td>
-									</tr>
-									<tr>
-										<td>Currency:</td>
-										<td>US Dollar</td>
-									</tr>
-									<tr>
-										<td>Package Count:</td>
-										<td id="pkgcount"></td>
-									</tr>
-									<tr>
-										<td>Total Weight:</td>
-										<td id="totalweight"></td>
-									</tr>
-								</table>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</section>
-			<section>
-				<table id="commodities" class="table">
-					<tbody>
-						<tr>
-							<th id="qty" class="boxheader bold"><h3>Qty.</h3></th>
-							<th id="unit" class="boxheader bold"><h3>Unit of Measure</h3></th>
-							<th id="desc" class="boxheader bold"><h3>Commodity Description</h3></th>
-							<th id="wt" class="boxheader bold"><h3>Wt.</h3></th>
-							<th id="value" class="boxheader bold"><h3>Unit Value</h3></th>
-						</tr>
-					</tbody>
-				</table>
-				
-			</section>
-			<section class="orderdate spacebetween">
-				<div class="bold">Total:</div>
-				<div id="totalValue" class="bold"></div>
-			</section>
-			
-			<!-- shipment information -->
-			<section>
-				<div id="shipemtInformation" class="boxheader center">
-					<h3 class="bold">Shipment Information</h3>
-				</div> <!--invoice header-->
-				<table id="shippingTable" class="table">
-					<tbody>
-						<tr>
-							<th>Shipped On:</th>
-							<th>Method:</th>
-							<th>Tracking Number:</th>
-						</tr>
-						<tr>
-							<td class="td-center"></td>
-							<td class="td-center"></td>
-							<td class="td-center"></td>
-						</tr>
-					</tbody>
-				</table>
-			</section>
-			
-			<!-- signature section -->
-			<section>
-				<!--  -->
-				<div class="spacebetween"></div>
-				<div id="signhere">
-					<div id="signature" class="line">Signature of shipper/exporter (print name, title, and sign)<br>I declare all the information contained in this invoice to be true and correct.</div>
-					<div id="spacer" class="line"></div>
-					<div id="date"class="line">Date</div>
+
+			<section class="flex-section">
+				<div class="halfwidth">
+					<div class="boxheader bold">
+						<h3 class="centertext">Ship From</h3>
+					</div>
+					<div class="name headerpadding">
+							<h4>Pellethead.com</h4>
+					</div> <!-- name -->
+					<div>W9715 State Road 96<br>PO Box 167<br>Dale, WI<br> 54931<br>920-779-6647<br>http://www.pellethead.com</div>
+				</div> <!-- halfwidth -->
+
+				<div class="halfwidth">
+					<div class="boxheader bold">
+						<h3 class="centertext">Ship To</h3>
+					</div> <!-- boxheader -->
+					<div class="name">
+						<input class="invis-form" type="text" name="form-cst-name" id="form-cst-name" placeholder="Cst. Full Name">
+					</div>	
+					<div>
+						<textarea class="invis-form" name="form-cst-address" id="form-cst-address" cols="40" rows="7" placeholder="Cst. Address"></textarea>
+					</div>
+				</div>
+			</section> <!-- flex-section -->
+
+			<section class="flex-section">
+				<div class="halfwidth">
+					<div class="boxheader bold">
+						<h3 class="centertext">Importer Other Than Recipient</h3>
+					</div>
+					<div class="headerpadding">
+						Earth Sense Energy Systems<br>CL 380782<br>W9715 State Road 96<br>Dale, WI 54931<br>920-779-6647 / 800-236-6647
+					</div>
+				</div> <!-- halfwidth -->
+
+				<div class="halfwidth">
+					<div class="boxheader bold">
+						<h3 class="centertext">Ship To</h3>
+					</div> <!-- boxheader -->
+
+					<div class="headerpadding">
+						<div id="checkboxes">
+							<div class="box"><div class="checkbox"></div class="bold">CIF</div>
+							<div class="box"><div class="checkbox"></div class="bold">FOB</div>
+							<div class="box"><div class="checkbox"></div class="bold">C&F</div>
+						</div>
+
+						<table class="table shiptotable">
+							<tr>
+								<td class="smtablehalf">Country of Export/Origin:</td>
+								<td class="smtablehalf">United States</td>
+							</tr>
+							<tr>
+								<td>Country of Destination:</td>
+								<td><input type="text" id="countrydest" class="invis-form" name="countrydest" placeholder="Country"></td>
+							</tr>
+							<tr>
+								<td>Currency:</td>
+								<td>US Dollar</td>
+							</tr>
+							<tr>
+								<td>Package Count:</td>
+								<td id="pkgcount"><input type="number" class="invis-form" name="form-pkg-count" id="form-pkg-count" placeholder="Pkg. Count"></td>
+							</tr>
+							<tr>
+								<td>Total Weight (lbs.):</td>
+								<td id="totalweight"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</section><!-- flex-section -->
+
+			<section id="sec-commodities">
+				<div class="col-buttons">
+					<button id="buttonPlus" class="invis-form buttonPlus">+</button>
+					<button id="buttonMinus" class="invis-form buttonMinus">-</button>
+				</div> <!-- col-buttons -->
+
+				<div id="grid-wrapper">
+						<div id="col1" class="boxheader bold centertext">
+							<h3>Qty.</h3>
+						</div>
+						<div id="col2" class="boxheader bold centertext">
+							<h3>Commodity Description</h3>
+						</div>
+						<div id="col3" class="boxheader bold centertext">
+							<h3>Wt. (lbs.)</h3>
+						</div>
+						<div id="col4" class="boxheader bold centertext">
+							<h3>Value</h3>
+						</div>
+
+							<input type="text" id="form-qty-1" class="invis-form form-qty col-qty" name="form-qty-1" placeholder="Qty.">
+							<input type="text" id="form-desc-1" class="invis-form form-desc" name="form-desc-1" placeholder="Description">
+							<input type="text" id="form-weight-1" class="invis-form form-weight col-wt centertext" name="form-weight-1" placeholder="Wt.">
+							<input type="text" id="form-value-1" class="invis-form form-value col-val" name="form-value-1" placeholder="Value $">
 				</div>
 			</section>
-		</div>
+
+				<div class="flex-total">
+					<div><h3>Total:</h3></div>
+					<div id="totalValue"></div>
+				</div>
+
+				<section>
+					<div class="col-buttons">
+						<button id="btnPlusShipment" class="invis-form">+</button>
+						<button id="btnMinusShipment" class="invis-form">-</button>
+					</div> <!-- col-buttons -->
+
+					<div id="shipWrapper">
+						<div id="shipColHeader" class="boxheader bold centertext"><h3>Shipment Information</h3></div>
+						<div id="shipCol1" class="bold centertext"><h4>Shipped On: (yyyy-mm-dd)</h4></div>
+						<div id="shipCol2" class="bold centertext">Method:</div>
+						<div id="shipCol3" class="bold centertext">Tracking Number:</div> 
+					</div>
+				</section>
+
+				<section>
+					<input type="file" id="sig-file" class="invis-form" accept="image/*" name="signature file" placeholder="Upload Signature Image">
+				</section>
+
+				<section id="sig-section" class="spacebetween">
+					<div id="sig-col-1">
+						<div id="signature">
+							<img id="sig-img" src="" alt="UPLOAD SIGNATURE IMAGE">
+						</div>
+						<div>Signature of shipper/exporter (print name, title, and sign)<br>I declare all the information contained in this invoice to be true and correct.</div>
+					</div>
+					<div id="sig-col-2">
+						<div id="sig-date">DATE HERE</div>
+					</div>
+				</section>
 		<!-- sheet -->
-		
+		<!-- <input id="form-submit" type="submit" value="Submit"> -->
+		</form> <!-- form -->
 	</div> <!-- container -->
 	<script src="commercial_invoice.js"></script>
 </body>
