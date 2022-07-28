@@ -182,34 +182,52 @@ function updateDates() {
     }
 }
 
-function totalWeight() {
-    totalWt.innerText = colProduct("form-qty", "form-weight");
-}
+let goods = {
+    quantities: [],
+    weights: [1, 2, 3],
+    values: [],
+    totalWeight() {
+        let subTotal = 0;
+        return parseFloat(this.weights.reduce((x, y) => x + y, subTotal).toFixed(2));
+    },
+    totalValue() {
+        let subTotal = 0;
+        return parseFloat(this.values.reduce((x, y) => x + y, subTotal).toFixed(2));
+    },
+};
 
-function totalValue() {
-    grandTotal.innerText = colProduct("form-qty", "form-value");
-}
+// goods.col${rowCount} = VALUEHERE
 
-function colProduct(idPrefix1, idPrefix2) {
-    let rowTotals = []; // empty array
+// function rowWeight() {
+//     totalWt.innerText = colProduct("form-qty", "form-weight");
+//     // Make an object.
+//     // Push the result of colProduct to the first row key of the object.
+// }
 
-    for (let i = 1; i <= rowCount; i++) {
-        rowTotals.push(multCells(i, idPrefix1, idPrefix2));
-    }
-    let subTotal = 0;
-    return parseFloat(rowTotals.reduce((x, y) => x + y, subTotal)).toFixed(2);
-}
+// function totalValue() {
+//     grandTotal.innerText = colProduct("form-qty", "form-value");
+// }
 
-function multCells(rowNum, idPrefix1, idPrefix2) {
-    // Append rowCount to our getElementById to get a selector
-    let prodArray = [];
+// function colProduct(idPrefix1, idPrefix2) {
+//     let rowTotals = []; // empty array
 
-    let selector1 = document.getElementById(idPrefix1.concat("-", rowNum));
-    prodArray.push(parseFloat(selector1.value));
+//     for (let i = 1; i <= rowCount; i++) {
+//         rowTotals.push(multCells(i, idPrefix1, idPrefix2));
+//     }
+//     let subTotal = 0;
+//     return parseFloat(rowTotals.reduce((x, y) => x + y, subTotal)).toFixed(2);
+// }
 
-    let selector2 = document.getElementById(idPrefix2.concat("-", rowNum));
-    prodArray.push(parseFloat(selector2.value));
+// function multCells(rowNum, idPrefix1, idPrefix2) {
+//     // Append rowCount to our getElementById to get a selector
+//     let prodArray = [];
 
-    let subTotal = 1;
-    return parseFloat(prodArray.reduce((x, y) => x * y, subTotal)).toFixed(2);
-}
+//     let selector1 = document.getElementById(idPrefix1.concat("-", rowNum));
+//     prodArray.push(parseFloat(selector1.value));
+
+//     let selector2 = document.getElementById(idPrefix2.concat("-", rowNum));
+//     prodArray.push(parseFloat(selector2.value));
+
+//     let subTotal = 1;
+//     return parseFloat(prodArray.reduce((x, y) => x * y, subTotal)).toFixed(2);
+// }
