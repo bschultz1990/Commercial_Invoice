@@ -23,13 +23,41 @@ let submitButton = document.getElementById("form-submit");
 let rowCount = 1;
 let shipCount = 0;
 
+let goods = {
+    quantities: [],
+    weights: [],
+    values: [],
+    totalWeight() {
+        let subTotal = 0;
+        return parseFloat(this.weights.reduce((x, y) => x + y, subTotal).toFixed(2));
+    },
+    totalValue() {
+        let subTotal = 0;
+        return parseFloat(this.values.reduce((x, y) => x + y, subTotal).toFixed(2));
+    },
+    pusher() {
+        // Check col-qty, col-wt, col-val. 
+        // If they're numbers, clear the above arrays and re-push to them.
+        let totalQtys = document.querySelectorAll(".col-qty")
+        console.log(`QuerySelectorAll returned: ${totalQtys}`);
+        for (let i of totalQtys) {
+            if (typeof i.value === "number") {
+                this.quantities.push(i.value)
+                console.log(`i.value = ${i.value}`)
+            } else {
+                alert("Please fill in all qty boxes with a number.")
+            };
+        }
+    }
+};
+
 addPackage(shipWrapper);
 redOutline();
 
-formQty.addEventListener("change", totalWeight); // add event listener to first qty
-formQty.addEventListener("change", totalValue);
-formWeight.addEventListener("change", totalWeight); // add event listener to first weight
-formValue.addEventListener("change", totalValue);
+formQty.addEventListener("change", goods.totalWeight); // add event listener to first qty
+formQty.addEventListener("change", goods.totalValue);
+formWeight.addEventListener("change", goods.totalWeight); // add event listener to first weight
+formValue.addEventListener("change", goods.totalValue);
 sigFile.addEventListener("change", function (e) {
     e.preventDefault();
     const sigImg = document.querySelector("#sig-img");
@@ -122,8 +150,8 @@ function addRow(target) {
     newQty.classList.add("col-qty");
     newQty.name = `form-qty-${rowCount}`;
     newQty.placeholder = "Qty.";
-    newQty.addEventListener("change", totalWeight);
-    newQty.addEventListener("change", totalValue);
+    newQty.addEventListener("change", goods.totalWeight);
+    newQty.addEventListener("change", goods.totalValue);
     target.appendChild(newQty);
 
     const newDesc = document.createElement("input");
@@ -144,7 +172,7 @@ function addRow(target) {
     newWt.classList.add("centertext");
     newWt.name = `form-weight-${rowCount}`;
     newWt.placeholder = "Wt.";
-    newWt.addEventListener("change", totalWeight);
+    newWt.addEventListener("change", goods.totalWeight);
     target.appendChild(newWt);
 
     const newVal = document.createElement("input");
@@ -155,7 +183,7 @@ function addRow(target) {
     newVal.classList.add("col-val");
     newVal.name = `form-value-${rowCount}`;
     newVal.placeholder = "Value $";
-    newVal.addEventListener("change", totalValue);
+    newVal.addEventListener("change", goods.totalValue);
     target.appendChild(newVal);
 
     redOutline();
@@ -182,26 +210,9 @@ function updateDates() {
     }
 }
 
-let goods = {
-    quantities: [],
-    weights: [1, 2, 3],
-    values: [],
-    totalWeight() {
-        let subTotal = 0;
-        return parseFloat(this.weights.reduce((x, y) => x + y, subTotal).toFixed(2));
-    },
-    totalValue() {
-        let subTotal = 0;
-        return parseFloat(this.values.reduce((x, y) => x + y, subTotal).toFixed(2));
-    },
-};
 
-// goods.col${rowCount} = VALUEHERE
-
-// function rowWeight() {
+// function totalWeight() {
 //     totalWt.innerText = colProduct("form-qty", "form-weight");
-//     // Make an object.
-//     // Push the result of colProduct to the first row key of the object.
 // }
 
 // function totalValue() {
