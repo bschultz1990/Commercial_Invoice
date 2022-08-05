@@ -28,40 +28,65 @@ let goods = {
     weights: [],
     values: [],
     totalWeight() {
-        let subTotal = 0;
-        return parseFloat(this.weights.reduce((x, y) => x + y, subTotal).toFixed(2));
+      let rowIndex = rowCount-1;
+      console.log("rowIndex: ",rowIndex);
+
+      // let subTotal = 0;
+      // return parseFloat(goods.weights.reduce((x, y) => x + y, subTotal).toFixed(2));
     },
-    totalValue() {
-        let subTotal = 0;
-        return parseFloat(this.values.reduce((x, y) => x + y, subTotal).toFixed(2));
-    },
-    qtyPusher() {
-        // Check col-qty, col-wt, col-val. 
-        // If they're numbers, clear the above arrays and re-push to them.
-        let totalQtys = document.querySelectorAll(".col-qty")
-        // console.log(`QuerySelectorAll returned:`);
-        // console.dir(totalQtys)
-        goods.quantities = [] // clear the array first
-        for (let i of totalQtys) {
-            if (typeof i.valueAsNumber == "number") {
-                goods.quantities.push(i.value)
-                console.log(`i.value = ${i.value}`)
-            } else {
-                alert("Please fill in all qty boxes with a number.")
-            };
-        }
-    },
-    wtPusher() {},
-    valPusher(){}
+  totalValue() {
+    let subTotal = 0;
+    return parseFloat(goods.values.reduce((x, y) => x + y, subTotal).toFixed(2));
+  },
+  qtyPusher() {
+    // Check col-qty, col-wt, col-val. 
+    // If they're numbers, clear the above arrays and re-push to them.
+    let totalQtys = document.querySelectorAll(".col-qty")
+    // console.log(`QuerySelectorAll returned:`);
+    // console.dir(totalQtys)
+    goods.quantities = [] // clear the array first
+    for (let i of totalQtys) {
+      if (typeof i.valueAsNumber == "number") {
+        goods.quantities.push(i.value)
+        // console.log(`i.value = ${i.value}`)
+      } else {
+        alert("Please fill in all qty boxes with a number.")
+      };
+    }
+    console.log("goods.quantities: ", goods.quantities);
+  },
+  wtPusher() {
+    let totalWeights = document.querySelectorAll(".col-wt");
+    goods.weights = [];
+    for (let i of totalWeights) {
+      if (typeof i.valueAsNumber == "number") {
+        goods.weights.push(i.value)
+      } else {
+        alert("Please fill in all weight boxes with a number.")
+      };
+    }
+    console.log("goods.weights: ", goods.weights);
+  },
+  valPusher(){
+    let totalVals = document.querySelectorAll(".col-val");
+    goods.values = [];
+    for (let i of totalVals) {
+      if (typeof i.valueAsNumber == "number") {
+        goods.values.push(i.value);
+      } else {
+        alert("Please fill in all value boxes with a number.")
+      };
+    };
+    console.log(`Goods.values: `, goods.values)
+  }
 };
 
 addPackage(shipWrapper);
 redOutline();
 
 formQty.addEventListener("change", goods.qtyPusher); // add event listener to first qty
-formQty.addEventListener("change", goods.qtyPusher);
-// formWeight.addEventListener("change", goods.pusher); // add event listener to first weight
-// formValue.addEventListener("change", goods.pusher);
+formWeight.addEventListener("change", goods.wtPusher); // add event listener to first weight
+formValue.addEventListener("change", goods.valPusher); // add event listenre to first value
 sigFile.addEventListener("change", function (e) {
     e.preventDefault();
     const sigImg = document.querySelector("#sig-img");
@@ -87,7 +112,9 @@ btnMinus.addEventListener("click", function (e) {
         }
         rowCount--;
         goods.quantities = [] // Clear .quantities.
-        goods.pusher() // rediscover remaining quantities.
+        goods.qtyPusher() // rediscover remaining quantities.
+        goods.wtPusher() // rediscover remaining weights.
+        goods.valPusher() // Rediscover remaining values.
     } else {
         console.log(`Found first row. Not deleting.`);
     }
@@ -146,7 +173,6 @@ function subtractPackage(target) {
         console.log(`Found first row. Not deleting. ShipCount = ${shipCount}`);
     }
 }
-
 function addRow(target) {
     const newQty = document.createElement("input");
     newQty.type = "text";
@@ -158,6 +184,7 @@ function addRow(target) {
     newQty.placeholder = "Qty.";
     newQty.addEventListener("change", goods.qtyPusher);
     newQty.addEventListener("change", goods.valPusher);
+    newQty.addEventListener("change", goods.wtPusher);
     target.appendChild(newQty);
 
     const newDesc = document.createElement("input");
@@ -179,6 +206,7 @@ function addRow(target) {
     newWt.name = `form-weight-${rowCount}`;
     newWt.placeholder = "Wt.";
     newWt.addEventListener("change", goods.wtPusher);
+    newWt.addEventListener("change", goods.qtyPusher);
     target.appendChild(newWt);
 
     const newVal = document.createElement("input");
@@ -190,6 +218,7 @@ function addRow(target) {
     newVal.name = `form-value-${rowCount}`;
     newVal.placeholder = "Value $";
     newVal.addEventListener("change", goods.valPusher);
+    newVal.addEventListener("change", goods.qtyPusher);
     target.appendChild(newVal);
 
     redOutline();
