@@ -27,58 +27,54 @@ let goods = {
     quantities: [],
     weights: [],
     values: [],
-    totalWeight() {
-      let rowIndex = rowCount-1;
-      console.log("rowIndex: ",rowIndex);
-
-      // let subTotal = 0;
-      // return parseFloat(goods.weights.reduce((x, y) => x + y, subTotal).toFixed(2));
+    // totalWeight() {
+    //     for (let i = 0; i < goods.quantities.length; i++) {
+    // },
+    totalValue() {
+        let subTotal = 0;
+        return parseFloat(goods.values.reduce((x, y) => x + y, subTotal).toFixed(2));
     },
-  totalValue() {
-    let subTotal = 0;
-    return parseFloat(goods.values.reduce((x, y) => x + y, subTotal).toFixed(2));
-  },
-  qtyPusher() {
-    // Check col-qty, col-wt, col-val. 
-    // If they're numbers, clear the above arrays and re-push to them.
-    let totalQtys = document.querySelectorAll(".col-qty")
-    // console.log(`QuerySelectorAll returned:`);
-    // console.dir(totalQtys)
-    goods.quantities = [] // clear the array first
-    for (let i of totalQtys) {
-      if (typeof i.valueAsNumber == "number") {
-        goods.quantities.push(i.value)
-        // console.log(`i.value = ${i.value}`)
-      } else {
-        alert("Please fill in all qty boxes with a number.")
-      };
-    }
-    console.log("goods.quantities: ", goods.quantities);
-  },
-  wtPusher() {
-    let totalWeights = document.querySelectorAll(".col-wt");
-    goods.weights = [];
-    for (let i of totalWeights) {
-      if (typeof i.valueAsNumber == "number") {
-        goods.weights.push(i.value)
-      } else {
-        alert("Please fill in all weight boxes with a number.")
-      };
-    }
-    console.log("goods.weights: ", goods.weights);
-  },
-  valPusher(){
-    let totalVals = document.querySelectorAll(".col-val");
-    goods.values = [];
-    for (let i of totalVals) {
-      if (typeof i.valueAsNumber == "number") {
-        goods.values.push(i.value);
-      } else {
-        alert("Please fill in all value boxes with a number.")
-      };
-    };
-    console.log(`Goods.values: `, goods.values)
-  }
+    qtyPusher() {
+        // Check col-qty, col-wt, col-val.
+        // If they're numbers, clear the above arrays and re-push to them.
+        let totalQtys = document.querySelectorAll(".col-qty");
+        // console.log(`QuerySelectorAll returned:`);
+        // console.dir(totalQtys)
+        goods.quantities = []; // clear the array first
+        for (let i of totalQtys) {
+            if (typeof i.valueAsNumber == "number") {
+                goods.quantities.push(i.value);
+                // console.log(`i.value = ${i.value}`)
+            } else {
+                alert("Please fill in all qty boxes with a number.");
+            }
+        }
+        console.log("goods.quantities: ", goods.quantities);
+    },
+    wtPusher() {
+        let totalWeights = document.querySelectorAll(".col-wt");
+        goods.weights = [];
+        for (let i of totalWeights) {
+            if (typeof i.valueAsNumber == "number") {
+                goods.weights.push(i.value);
+            } else {
+                alert("Please fill in all weight boxes with a number.");
+            }
+        }
+        console.log("goods.weights: ", goods.weights);
+    },
+    valPusher() {
+        let totalVals = document.querySelectorAll(".col-val");
+        goods.values = [];
+        for (let i of totalVals) {
+            if (typeof i.valueAsNumber == "number") {
+                goods.values.push(i.value);
+            } else {
+                alert("Please fill in all value boxes with a number.");
+            }
+        }
+        console.log(`Goods.values: `, goods.values);
+    },
 };
 
 addPackage(shipWrapper);
@@ -111,10 +107,10 @@ btnMinus.addEventListener("click", function (e) {
             gridWrapper.lastElementChild.remove();
         }
         rowCount--;
-        goods.quantities = [] // Clear .quantities.
-        goods.qtyPusher() // rediscover remaining quantities.
-        goods.wtPusher() // rediscover remaining weights.
-        goods.valPusher() // Rediscover remaining values.
+        goods.quantities = []; // Clear .quantities.
+        goods.qtyPusher(); // rediscover remaining quantities.
+        goods.wtPusher(); // rediscover remaining weights.
+        goods.valPusher(); // Rediscover remaining values.
     } else {
         console.log(`Found first row. Not deleting.`);
     }
@@ -244,7 +240,6 @@ function updateDates() {
         i.innerText = date.value;
     }
 }
-
 
 // function totalWeight() {
 //     totalWt.innerText = colProduct("form-qty", "form-weight");
