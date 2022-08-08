@@ -43,8 +43,8 @@ let goods = {
         goods.quantities = []; // clear the array first
         for (let i of totalQtys) {
             if (typeof i.valueAsNumber == "number") {
-                goods.quantities.push(i.value);
-                // console.log(`i.value = ${i.value}`)
+                goods.quantities.push(i.valueAsNumber);
+                // console.dir(`i.value = ${i.valueAsNumber}`)
             } else {
                 alert("Please fill in all qty boxes with a number.");
             }
@@ -56,7 +56,7 @@ let goods = {
         goods.weights = [];
         for (let i of totalWeights) {
             if (typeof i.valueAsNumber == "number") {
-                goods.weights.push(i.value);
+                goods.weights.push(i.valueAsNumber);
             } else {
                 alert("Please fill in all weight boxes with a number.");
             }
@@ -68,7 +68,7 @@ let goods = {
         goods.values = [];
         for (let i of totalVals) {
             if (typeof i.valueAsNumber == "number") {
-                goods.values.push(i.value);
+                goods.values.push(i.valueAsNumber);
             } else {
                 alert("Please fill in all value boxes with a number.");
             }
@@ -125,6 +125,8 @@ btnMinusShipment.addEventListener("click", function (e) {
     subtractPackage(shipWrapper);
 });
 
+date.addEventListener("change", updateDates)
+
 function addPackage(target) {
     const newShipDate = document.createElement("div");
     newShipDate.classList.add("ship-date");
@@ -154,7 +156,6 @@ function addPackage(target) {
     shipCount++;
     pkgCount.innerText = shipCount;
 
-    updateDates();
     redOutline();
 }
 
@@ -171,7 +172,7 @@ function subtractPackage(target) {
 }
 function addRow(target) {
     const newQty = document.createElement("input");
-    newQty.type = "text";
+    newQty.type = "number";
     newQty.id = `form-qty-${rowCount}`;
     newQty.classList.add("invis-form");
     newQty.classList.add("form-qty");
@@ -193,7 +194,7 @@ function addRow(target) {
     target.appendChild(newDesc);
 
     const newWt = document.createElement("input");
-    newWt.type = "text";
+    newWt.type = "number";
     newWt.id = `form-weight-${rowCount}`;
     newWt.classList.add("invis-form");
     newWt.classList.add("form-weight");
@@ -206,7 +207,7 @@ function addRow(target) {
     target.appendChild(newWt);
 
     const newVal = document.createElement("input");
-    newVal.type = "text";
+    newVal.type = "number";
     newVal.id = `form-value-${rowCount}`;
     newVal.classList.add("invis-form");
     newVal.classList.add("form-value");
