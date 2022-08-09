@@ -42,7 +42,7 @@ let goods = {
         if (grandTotalWeight == NaN) {
             return;
         } else {
-            return grandTotalWeight;
+            return totalWt.innerText = grandTotalWeight;
         }
     },
 
