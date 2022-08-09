@@ -27,13 +27,42 @@ let goods = {
     quantities: [],
     weights: [],
     values: [],
-    // totalWeight() {
-    //     for (let i = 0; i < goods.quantities.length; i++) {
-    // },
-    totalValue() {
-        let subTotal = 0;
-        return parseFloat(goods.values.reduce((x, y) => x + y, subTotal).toFixed(2));
+    lineweights: [],
+    linevalues: [],
+    totalWeight() {
+        goods.lineweights = [];
+        let wtSubTotal = 0;
+        for (let j = 0; j <= rowCount - 1; j++) {
+            // console.log(`Line: ${j + 1} weights: `);
+            // console.log(`Qty: ${goods.quantities[j]} * ${goods.weights[j]} = ${goods.quantities[j] * goods.weights[j]}`);
+            goods.lineweights.push(goods.quantities[j] * goods.weights[j]);
+        }
+
+        let grandTotalWeight = parseFloat(goods.lineweights.reduce((x, y) => x + y, wtSubTotal).toFixed(2));
+        if (grandTotalWeight == NaN) {
+            return;
+        } else {
+            return grandTotalWeight;
+        }
     },
+
+    totalValue() {
+        goods.linevalues = [];
+        let valSubTotal = 0;
+        for (let j = 0; j <= rowCount - 1; j++) {
+            // console.log(`Line: ${j + 1} values:`);
+            // console.log(`Qty: ${goods.quantities[j]} * ${goods.values[j]} = ${goods.quantities[j] * goods.values[j]}`);
+            goods.linevalues.push(goods.quantities[j] * goods.values[j]);
+        }
+
+        let grandTotalValue = parseFloat(goods.linevalues.reduce((x, y) => x + y, valSubTotal).toFixed(2));
+        if (grandTotalValue == NaN) {
+            return;
+        } else {
+            return grandTotalValue;
+        }
+    },
+
     qtyPusher() {
         // Check col-qty, col-wt, col-val.
         // If they're numbers, clear the above arrays and re-push to them.
@@ -49,7 +78,7 @@ let goods = {
                 alert("Please fill in all qty boxes with a number.");
             }
         }
-        console.log("goods.quantities: ", goods.quantities);
+        // console.log("goods.quantities: ", goods.quantities);
     },
     wtPusher() {
         let totalWeights = document.querySelectorAll(".col-wt");
@@ -61,7 +90,7 @@ let goods = {
                 alert("Please fill in all weight boxes with a number.");
             }
         }
-        console.log("goods.weights: ", goods.weights);
+        // console.log("goods.weights: ", goods.weights);
     },
     valPusher() {
         let totalVals = document.querySelectorAll(".col-val");
@@ -73,7 +102,7 @@ let goods = {
                 alert("Please fill in all value boxes with a number.");
             }
         }
-        console.log(`Goods.values: `, goods.values);
+        // console.log(`goods.values: `, goods.values);
     },
 };
 
@@ -125,7 +154,7 @@ btnMinusShipment.addEventListener("click", function (e) {
     subtractPackage(shipWrapper);
 });
 
-date.addEventListener("change", updateDates)
+date.addEventListener("change", updateDates);
 
 function addPackage(target) {
     const newShipDate = document.createElement("div");
@@ -241,35 +270,3 @@ function updateDates() {
         i.innerText = date.value;
     }
 }
-
-// function totalWeight() {
-//     totalWt.innerText = colProduct("form-qty", "form-weight");
-// }
-
-// function totalValue() {
-//     grandTotal.innerText = colProduct("form-qty", "form-value");
-// }
-
-// function colProduct(idPrefix1, idPrefix2) {
-//     let rowTotals = []; // empty array
-
-//     for (let i = 1; i <= rowCount; i++) {
-//         rowTotals.push(multCells(i, idPrefix1, idPrefix2));
-//     }
-//     let subTotal = 0;
-//     return parseFloat(rowTotals.reduce((x, y) => x + y, subTotal)).toFixed(2);
-// }
-
-// function multCells(rowNum, idPrefix1, idPrefix2) {
-//     // Append rowCount to our getElementById to get a selector
-//     let prodArray = [];
-
-//     let selector1 = document.getElementById(idPrefix1.concat("-", rowNum));
-//     prodArray.push(parseFloat(selector1.value));
-
-//     let selector2 = document.getElementById(idPrefix2.concat("-", rowNum));
-//     prodArray.push(parseFloat(selector2.value));
-
-//     let subTotal = 1;
-//     return parseFloat(prodArray.reduce((x, y) => x * y, subTotal)).toFixed(2);
-// }
