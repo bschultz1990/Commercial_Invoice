@@ -42,7 +42,7 @@ let goods = {
         if (grandTotalWeight == NaN) {
             return;
         } else {
-            return totalWt.innerText = grandTotalWeight;
+            return totalWt.innerText = `${grandTotalWeight} lbs.`;
         }
     },
 
@@ -59,7 +59,7 @@ let goods = {
         if (grandTotalValue == NaN) {
             return;
         } else {
-            return grandTotalValue;
+            return grandTotal.innerText = `$${grandTotalValue}`;
         }
     },
 
@@ -110,6 +110,7 @@ addPackage(shipWrapper);
 redOutline();
 
 formQty.addEventListener("change", goods.qtyPusher); // add event listener to first qty
+formQty.addEventListener("change", goods.totalWeight);
 formWeight.addEventListener("change", goods.wtPusher); // add event listener to first weight
 formValue.addEventListener("change", goods.valPusher); // add event listenre to first value
 sigFile.addEventListener("change", function (e) {
