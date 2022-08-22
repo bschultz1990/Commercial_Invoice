@@ -26,6 +26,8 @@ let shipCount = 0;
 addPackage(shipWrapper);
 redOutline();
 
+date.addEventListener("change", updateDates)
+
 formQty.addEventListener("change", totalWeight); // add event listener to first qty
 formQty.addEventListener("change", totalValue);
 formWeight.addEventListener("change", totalWeight); // add event listener to first weight
@@ -33,9 +35,10 @@ formValue.addEventListener("change", totalValue);
 sigFile.addEventListener("change", function (e) {
     e.preventDefault();
     const sigImg = document.querySelector("#sig-img");
-    URL.revokeObjectURL(e.target.files[0].name);
+//    URL.revokeObjectURL(e.target.files[0].name);
     sigImg.src = URL.createObjectURL(e.target.files[0]); // Assign source to image
     console.dir(sigImg.src);
+    
 });
 
 btnPlus.addEventListener("click", function (e) {
